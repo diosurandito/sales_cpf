@@ -11,7 +11,7 @@ class SalesRekapsTableSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('sales_admins')->insert(array(
+    	DB::table('sales_rekaps')->insert(array(
     		[ 
     			'nik' => '201901150857',
     			'id_dealer' => 'DLRJKI0001',
@@ -47,8 +47,8 @@ class SalesRekapsTableSeeder extends Seeder
     			'id_dealer' => 'DLRJKI0006',
     			'lat' => '-6.177243',
     			'lng' => '106.766304',
-    		],
-
+    		]
 
     	));
     }
+}

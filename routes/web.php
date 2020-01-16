@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return redirect()->route('admlogin');
 });
+
+Route::group(['prefix' => '/'], function()
+{
+	//AUTHADMIN
+	Route::get('login', 'Admin\AuthAdminController@showLoginForm')->name('admlogin');
+	Route::post('login','Admin\AuthAdminController@login')->name('admin.login');
+	Route::post('logout','Admin\AuthAdminController@logoutAdmin')->name('admlogout');
+	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+});
+
