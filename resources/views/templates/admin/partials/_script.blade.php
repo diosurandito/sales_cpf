@@ -89,12 +89,15 @@
         </script>
         <script type="text/javascript">
             $(document).ready(function() {
-                var table = $('#tb_rwt_tint').DataTable( {
+                var table = $('#tb_dealer').DataTable( {
                     scrollY:        "80vh",
-                    scrollX:        false,
+                    scrollX:        true,
                     scrollCollapse: true,
                     paging:         true,
                     pageLength: 50,
+                    fixedColumns:   {
+                        leftColumns: 3
+                    }
                     
                 } );
             } );

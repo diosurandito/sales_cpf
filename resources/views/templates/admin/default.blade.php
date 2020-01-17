@@ -2,7 +2,7 @@
 <html lang="{{ config('app.locale') }}">
 @include('templates.admin.partials._head')
 <body>
-  <div id="page-container" class="sidebar-o sidebar-dark @if(Request::is('admin/rekap-po')) sidebar-mini @endif enable-page-overlay side-scroll page-header-dark page-header-fixed">
+  <div id="page-container" class="sidebar-o sidebar-dark @if(Request::is('dealer')) sidebar-mini @endif enable-page-overlay side-scroll page-header-dark page-header-fixed">
 
 
     <!-- Sidebar -->

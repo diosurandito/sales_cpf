@@ -27,6 +27,12 @@
                     <span class="nav-main-link-name">Dashboard</span>
                 </a>
             </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link @if (Request::is('dealer')) active @endif" href="{{route('admin.dealer.index')}}">
+                    <i class="nav-main-link-icon fa fa-store-alt"></i>
+                    <span class="nav-main-link-name">Dealer</span>
+                </a>
+            </li>
             <!--  -->
 
         </ul>
