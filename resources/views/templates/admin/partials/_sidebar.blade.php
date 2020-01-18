@@ -33,6 +33,12 @@
                     <span class="nav-main-link-name">Dealer</span>
                 </a>
             </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link @if (Request::is('sales-rekap')) active @endif" href="{{route('admin.salesrekap.index')}}">
+                    <i class="nav-main-link-icon fa fa-business-time"></i>
+                    <span class="nav-main-link-name">Rekap Kunjungan</span>
+                </a>
+            </li>
             <!--  -->
 
         </ul>

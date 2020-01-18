@@ -191,6 +191,97 @@
 								</div>
 							</div>
 						</div>
+						<div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-block-popin" aria-hidden="true">
+							<div class="modal-dialog modal-lg" role="document">
+								<div class="modal-content">
+									<div class="block block-themed block-transparent mb-0">
+										<div class="block-header" style="background: #b54242;">
+											<h3 class="block-title">Ubah Data Dealer ({{$id_dealer}})</h3>
+											<div class="block-options">
+												<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+													<i class="fa fa-fw fa-times"></i>
+												</button>
+											</div>
+										</div>
+										<div class="block-content font-size-sm">
+											<div class="row">
+												<div class="col-lg-8 col-xl-12">
+													<form action="{{route('admin.dealer.update', $data->id)}}" method="post">
+														@csrf
+														@method('PATCH')
+														<div class="form-group">
+															<label for="">Nama Dealer</label><br>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" style="background-color: #ff000063;"><i class="fa fa-store-alt"></i>
+																	</span>
+																</div>
+																<input type="text" class="js-maxlength form-control" id="example-group1-input1" name="nama_dealer" value="{{$data->nama_dealer}}" maxlength="100" placeholder="Masukkan Nama Dealer" data-always-show="true" data-warning-class="badge badge-primary" data-limit-reached-class="badge badge-primary" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="">Alamat Dealer</label><br>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" style="background-color: #ff000063;"><i class="fa fa-map-marked-alt"></i>
+																	</span>
+																</div>
+																<textarea class="js-maxlength form-control" name="alamat" maxlength="150" placeholder="Masukkan Alamat" data-always-show="true" data-warning-class="badge badge-primary" data-limit-reached-class="badge badge-primary" required>{{$data->alamat}}</textarea>
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="">Kota/Kabupaten</label><br>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" style="background-color: #ff000063;"><i class="fa fa-map-marked-alt"></i>
+																	</span>
+																</div>
+																<input class="js-maxlength form-control" name="kota" value="{{$data->kota}}" maxlength="40" placeholder="Masukkan Nama Kota/Kabupaten" data-always-show="true" data-warning-class="badge badge-primary" data-limit-reached-class="badge badge-primary" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="">Provinsi</label><br>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" style="background-color: #ff000063;"><i class="fa fa-map-marked-alt"></i>
+																	</span>
+																</div>
+																<input class="js-maxlength form-control" name="provinsi" value="{{$data->provinsi}}" maxlength="40" placeholder="Masukkan Nama Provinsi" data-always-show="true" data-warning-class="badge badge-primary" data-limit-reached-class="badge badge-primary" required>
+															</div>
+														</div>
+
+														<div class="form-group">
+															<label for="">Kontak Person</label><br>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" style="background-color: #ff000063;"><i class="fa fa-user-tie"></i>
+																	</span>
+																</div>
+																<input class="js-maxlength form-control" name="kontak_person" value="{{$data->kontak_person}}" maxlength="60" placeholder="Masukkan Kontak Person" data-always-show="true" data-warning-class="badge badge-primary" data-limit-reached-class="badge badge-primary" required>
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="">Nomor Telpon<span class="text-danger">*</span></label><br>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" style="background-color: #ff000063;"><i class="fa fa-phone"></i>
+																	</span>
+																</div>
+																<input type="tel" id="no_telp" pattern="\(?(?:\+62|62|0)(?:\d{2,3})?\)?[ .-]?\d{2,4}[ .-]?\d{2,4}[ .-]?\d{2,4}" class="form-control" maxlength="17" name="no_telp" value="{{$data->no_telp}}" placeholder="Masukkan No Telp" data-always-show="true" data-warning-class="badge badge-primary" data-limit-reached-class="badge badge-primary" required>
+															</div>
+														</div>
+														<div class="block-content block-content-full text-right border-top">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+															<button type="submit" class="btn btn-primary text-white">Simpan</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						@endforeach
 					</tbody>
 				</table>  

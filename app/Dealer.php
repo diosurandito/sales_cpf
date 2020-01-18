@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Eloquent;
 
 class Dealer extends Model
 {
@@ -13,6 +14,7 @@ class Dealer extends Model
 	protected $table = 'dealers';
 	protected $guarded = [];
 	protected $dates = ['deleted_at'];
+
 
 	
 

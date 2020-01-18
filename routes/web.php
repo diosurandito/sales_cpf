@@ -29,5 +29,12 @@ Route::group(['prefix' => '/'], function()
 	Route::patch('dealer/on/{id}', 'Admin\DealerController@on')->name('admin.dealer.on');
 	Route::patch('dealer/off/{id}', 'Admin\DealerController@off')->name('admin.dealer.off');
 	Route::get('dealer/destroy/{id}','Admin\DealerController@destroy')->name('admin.dealer.destroy');
+	Route::patch('dealer/update/{id}', 'Admin\DealerController@update')->name('admin.dealer.update');
+
+	//Sales Rekap
+	Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
+
+	//Unautho
+	Route::get('unauthorized', 'Admin\AuthAdminController@unauthorized')->name('unauthorized');
 });
 

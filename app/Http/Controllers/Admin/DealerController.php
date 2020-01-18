@@ -66,6 +66,23 @@ class DealerController extends Controller
 
 	}
 
+	public function update(Request $request, $id)
+	{
+		$dealer = Dealer::find($id);
+		$dealer->update([
+			'nama_dealer' => $request->nama_dealer,
+			'alamat' => $request->alamat,
+			'kota' => $request->kota,
+			'provinsi' => $request->provinsi,
+			'kontak_person' => $request->kontak_person,
+			'no_telp' => $request->no_telp,
+		]);
+
+		return redirect()->route('admin.dealer.index')->with('success', 'Data dealer berhasil diubah');
+
+
+	}
+
 	public function on($id)
 	{
 		$dealer = Dealer::find($id);

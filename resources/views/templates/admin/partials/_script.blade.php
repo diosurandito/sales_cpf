@@ -8,6 +8,7 @@
         -->
         <!-- <script src="{{ asset('public/assets/js/oneui.app.min.js') }}"></script> -->
 
+
         
         <script type="text/javascript" src="{{ asset('public/assets/bs4/js/jquery.dataTables.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('public/assets/bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -98,6 +99,19 @@
                     fixedColumns:   {
                         leftColumns: 3
                     }
+                    
+                } );
+            } );
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var table = $('#tb_sales_rekap').DataTable( {
+                    scrollY:        "90vh",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    paging:         true,
+                    pageLength: 50,
+                    
                     
                 } );
             } );
