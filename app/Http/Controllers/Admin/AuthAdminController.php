@@ -34,6 +34,7 @@ class AuthAdminController extends Controller
 
 		if (Auth::guard('admin')->attempt($credential, $request->member)){
 			$admin = SalesAdmin::find(Auth::guard('admin')->user()->no);
+			
 			return redirect()->route('admin.home'); 
 
 		}

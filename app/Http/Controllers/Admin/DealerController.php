@@ -103,6 +103,16 @@ class DealerController extends Controller
 		return back()->with('success', 'Dealer berhasil diNON-AKTIFkan');
 	}
 
+	public function printstkr_all()
+	{
+		$dealer = Dealer::select('*')
+		->orderBy('dealers.id', 'ASC')
+		->get();
+
+		return view('pages.admin.stiker', compact('dealer'));
+
+	}
+
 	public function destroy($id)
 	{
 		$dealer = Dealer::find($id);

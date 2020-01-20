@@ -34,7 +34,12 @@ Route::group(['prefix' => '/'], function()
 	//Sales Rekap
 	Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
 
+	//Sticker
+	Route::get('print-sticker', 'Admin\DealerController@printstkr_all')->name('admin.dealer.printstkr.all');
+
 	//Unautho
 	Route::get('unauthorized', 'Admin\AuthAdminController@unauthorized')->name('unauthorized');
+
+
 });
 
