@@ -106,13 +106,13 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 var table = $('#tb_sales_rekap').DataTable( {
-                    scrollY:        "90vh",
+                    scrollY:        "100vh",
                     scrollX:        true,
                     scrollCollapse: true,
                     paging:         true,
                     pageLength: 50,
-                    
-                    
+                    //autoWidth: true,
+
                 } );
             } );
         </script>
@@ -151,8 +151,6 @@
                 minViewMode: "years",
                 autoclose: true
                 
-
-
             });
         </script>
 

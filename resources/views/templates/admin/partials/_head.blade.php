@@ -113,21 +113,5 @@
                     margin: 0 auto;
                 }
             </style>
-
-            <style>
-                .chasis {
-                    width: 420px;
-                    height: 500px;
-                    padding: 5px;
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-image: url({{ asset('public/images/bg/topchasis.svg') }});
-
-}
-</style>
-
-
-
-</head>
+        </head>
 

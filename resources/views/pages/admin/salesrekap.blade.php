@@ -44,13 +44,11 @@
 		<div class="block">
 			<div class="block-header" style="background: #b54242;">
 				<h2 class="block-title text-white">Data Rekap Kunjungan Sales</h2>
-				<button class="btn btn-light mr-1" data-toggle="modal" data-target="#add_dealer">
-					<i class="fa fa-fw fa-plus mr-1"></i> Tambah Data
-				</button>
+				
 			</div>
 			<div class="block-content block-content-full">
 				<!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-				<table id="tb_sales_rekap" class="table table-bordered table-striped" style="font-size: 15px;width:100%;">
+				<table id="tb_sales_rekap" class="table table-bordered table-striped" width="100%">
 					<thead class="thead-dark text-center align-middle">
 						<tr>
 							<th style="font-size: 13px;" class="align-middle">No</th>
@@ -60,9 +58,6 @@
 							<th style="font-size: 13px;" class="align-middle">Tanggal Kunjungan</th>
 							<th style="font-size: 13px;" class="align-middle">Lokasi Kunjungan</th>
 							<!-- <th style="font-size: 13px;" class="align-middle">Aksi</th> -->
-							
-							
-							
 						</tr>
 					</thead>
 					<tbody class="text-center">

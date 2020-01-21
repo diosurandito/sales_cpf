@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\SalesAdmin;
 use Illuminate\Validation\Rule;
+use DB;
 
 class AuthAdminController extends Controller
 {
@@ -35,7 +36,30 @@ class AuthAdminController extends Controller
 		if (Auth::guard('admin')->attempt($credential, $request->member)){
 			$admin = SalesAdmin::find(Auth::guard('admin')->user()->no);
 			
-			return redirect()->route('admin.home'); 
+			$sales = DB::table('sales_admins')
+			->select('*')
+			->where('nik', '=', $admin->nik)
+			->first();
+			if (!empty($sales->nik)) {
+				if ($sales->kode_akses === 'salescpf_adm1') {
+					return redirect()->route('admin.home');
+				}else{
+					Auth::guard('admin')->logout();
+					return redirect()->back()->withInput($request->only('username', 'remember'))->with('alertunauth','Maaf Akun Anda Tidak Mempunyai Hak Akses.');
+
+				}
+
+				//return dd($sales->kode_akses);
+
+				
+			}else{
+				Auth::guard('admin')->logout();
+				return redirect()->back()->withInput($request->only('username', 'remember'))->with('alertunauth','Maaf Akun Anda Tidak Mempunyai Hak Akses.');
+
+			}
+			
+			
+			// return redirect()->route('admin.home'); 
 
 		}
 		return redirect()->back()->withInput($request->only('username', 'remember'))->with('alert','Username atau Password Salah, Silahkan Coba Lagi.');
