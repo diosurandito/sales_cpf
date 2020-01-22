@@ -19,7 +19,7 @@
     .adm-image {
       background-image: url("{{ asset('public/images/bg/redwhite.jpg') }}");
       background-color: #cccccc;
-      height: 540px;
+      height: 536px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;

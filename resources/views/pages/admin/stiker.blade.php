@@ -38,11 +38,11 @@
 					<div class="row">
 						@foreach($dealer as $data)
 						<div class="card mb-3 mr-3" style="width: 12rem; border-style: solid;border-width: 5px; border-color: #656565;">
-							<div class="card-header text-center">{!! QrCode::size(144)->backgroundColor(255,131,0)->generate($data->id_dealer); !!}
+							<div class="card-header text-center">{!! QrCode::size(144)->backgroundColor(255,131,0)->margin(0)->generate($data->id_dealer); !!}
 							</div>
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item text-center text-black"><b>{{$data->id_dealer}}</b></li>
-								<li class="list-group-item text-center text-black">{{$data->nama_dealer}}</li>
+								<li class="list-group-item text-center text-black" style="font-size: 14px;">{{$data->nama_dealer}}</li>
 								<li class="list-group-item text-center text-black" style="font-size: 12px;">{{$data->alamat}}</li>
 
 							</ul>
@@ -50,13 +50,6 @@
 						@endforeach
 
 					</div>
-					
-
-					<!-- Footer -->
-					<!-- <p class="font-size-sm text-muted text-center py-3 my-3 border-top">
-						Thank you very much for doing business with us. We look forward to working with you again!
-					</p> -->
-					<!-- END Footer -->
 				</div>
 			</div>
 		</div>

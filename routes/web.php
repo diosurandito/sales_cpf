@@ -37,6 +37,8 @@ Route::group(['prefix' => '/'], function()
 	//Sticker
 	Route::get('print-sticker', 'Admin\DealerController@printstkr_all')->name('admin.dealer.printstkr.all');
 
+	Route::get('print-sticker/{id}', 'Admin\DealerController@printstkr')->name('admin.dealer.printstkr.id');
+
 	//Unautho
 	Route::get('unauthorized', 'Admin\AuthAdminController@unauthorized')->name('unauthorized');
 

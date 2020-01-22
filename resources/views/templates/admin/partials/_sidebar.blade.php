@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-main-item">
-                <a class="nav-main-link @if (Request::is('dealer')) active @endif" href="{{route('admin.dealer.index')}}">
+                <a class="nav-main-link @if (Request::is('dealer')) active @elseif (Request::is('print-sticker')) active @endif" href="{{route('admin.dealer.index')}}">
                     <i class="nav-main-link-icon fa fa-store-alt"></i>
                     <span class="nav-main-link-name">Dealer</span>
                 </a>
@@ -40,12 +40,12 @@
                 </a>
             </li>
 
-            <li class="nav-main-item">
+            <!-- <li class="nav-main-item">
                 <a class="nav-main-link @if (Request::is('print-sticker')) active @endif" href="{{route('admin.dealer.printstkr.all')}}">
                     <i class="nav-main-link-icon fa fa-qrcode"></i>
                     <span class="nav-main-link-name">Cetak Stiker</span>
                 </a>
-            </li>
+            </li> -->
             <!--  -->
 
         </ul>

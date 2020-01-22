@@ -21,7 +21,7 @@
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/logo_jki.png') }}">
+    <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/logocpf1.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/assets/media/photos/logo_jki.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/assets/media/photos/logo_jki.png') }}">
     <!-- END Icons -->
@@ -99,6 +99,7 @@
                 }
             }
         </script>
+        <script src="{{ asset('public/assets/js/range_dates.js') }}"></script>
 
 
 

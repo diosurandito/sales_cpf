@@ -113,6 +113,14 @@ class DealerController extends Controller
 
 	}
 
+	public function printstkr($id)
+	{
+		$data = Dealer::findOrFail($id);
+
+		return view('pages.admin.stikerbyid', compact('data'));
+
+	}
+
 	public function destroy($id)
 	{
 		$dealer = Dealer::find($id);

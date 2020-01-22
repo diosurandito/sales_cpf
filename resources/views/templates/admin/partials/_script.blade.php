@@ -104,6 +104,7 @@
             } );
         </script>
         <script type="text/javascript">
+
             $(document).ready(function() {
                 var table = $('#tb_sales_rekap').DataTable( {
                     scrollY:        "100vh",
@@ -112,8 +113,12 @@
                     paging:         true,
                     pageLength: 50,
                     //autoWidth: true,
+                    
 
                 } );
+                // Add event listeners to the two range filtering inputs
+                $('#min').keyup( function() { table.draw(); } );
+                $('#max').keyup( function() { table.draw(); } );
             } );
         </script>
 
@@ -160,6 +165,7 @@
         <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
         <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
         <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
+        
 
 
 

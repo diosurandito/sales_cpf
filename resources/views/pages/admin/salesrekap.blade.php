@@ -47,8 +47,23 @@
 				
 			</div>
 			<div class="block-content block-content-full">
+				<div class="row" style="margin-bottom: 5px;">
+					<div class="col-5">
+						<input type="text" class="js-datepicker form-control" id="min" name="min" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Awal" required>
+					</div>
+					<div class="col-2 text-center">
+						<span>s/d</span>
+					</div>
+					<div class="col-5">
+						<input type="text" class="js-datepicker form-control" id="max" name="max" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Akhir" required>
+					</div>
+
+
+					
+				</div>
+				
 				<!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-				<table id="tb_sales_rekap" class="table table-bordered table-striped" width="100%">
+				<table id="tb_sales_rekap" class="table table-bordered table-striped" width="1015px">
 					<thead class="thead-dark text-center align-middle">
 						<tr>
 							<th style="font-size: 13px;" class="align-middle">No</th>

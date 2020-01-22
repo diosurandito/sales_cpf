@@ -44,11 +44,18 @@
 		<div class="block">
 			<div class="block-header" style="background: #b54242;">
 				<h2 class="block-title text-white">Data Dealer</h2>
-				<button class="btn btn-light mr-1" data-toggle="modal" data-target="#add_dealer">
+				
+				<a href="{{ route('admin.dealer.printstkr.all') }}" class="btn btn-warning" title="Cetak Stiker">
+					<img src="{{asset('public/assets/media/favicons/printdo.svg')}}" height="23">&nbsp; Print All
+				</a>
+				<button class="btn btn-light mr-1" data-toggle="modal" data-target="#add_dealer" style="margin-left: 5px">
 					<i class="fa fa-fw fa-plus mr-1"></i> Tambah Data
 				</button>
+
 			</div>
+			
 			<div class="block-content block-content-full">
+				
 				<!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
 				<table id="tb_dealer" class="table  table-bordered table-striped" style="font-size: 15px;width:100%;">
 					<thead class="thead-dark text-center">
@@ -62,10 +69,8 @@
 							<th style="font-size: 13px;" class="align-middle">Kontak Person</th>
 							<th style="font-size: 13px;" class="align-middle">No Telp</th>
 							<th style="font-size: 13px;" class="align-middle">Status</th>
+							<th style="font-size: 13px;" class="align-middle">Print</th>
 							<th style="font-size: 13px;" class="align-middle">Aksi</th>
-							
-							
-							
 						</tr>
 					</thead>
 					<tbody class="text-center">
@@ -81,6 +86,11 @@
 							<td>{{$data->kontak_person}}</td>
 							<td>{{$data->no_telp}}</td>
 							<td>@if ($data->status == 1) <button type="button" class="btn btn-sm btn-outline-success" title="Aktif"><i class="lg fa fa-check-circle fa-lg"></i></button>@else <button type="button" class="btn btn-sm btn-outline-dark" title="Non-Aktif"><i class="fa fa-times-circle fa-lg"></i></button>@endif</td>
+							<td class="text-center">
+								<a href="{{ route('admin.dealer.printstkr.id',$data->id) }}" class="btn btn-sm btn-info" target="_blank" title="Cetak Stiker">
+									<img src="{{asset('public/assets/media/favicons/printso.svg')}}" width="25" height="25">
+								</a>
+							</td>
 							<td class="text-center">
 								<div class="btn-group">
 									@if ($data->status == 0)
