@@ -47,26 +47,34 @@
 				
 			</div>
 			<div class="block-content block-content-full">
-				<div class="row" style="margin-bottom: 5px;">
-					<div class="col-5">
-						<input type="text" class="js-datepicker form-control" id="min" name="min" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Awal" required>
+				<form action="{{ route('admin.salesrekap.index.filter')}}" method="post">
+					@csrf
+					@method('POST')
+					<div class="row mb-2 mt-0" style="margin-bottom: 5px;">
+						
+						<div class="col-2">
+							<input type="text" class="js-datepicker form-control" name="from_date" id="from_date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Awal" required>
+						</div>
+						<div class="col-xs-1 mt-2 text-center align-middle">
+							s/d
+						</div>
+						<div class="col-2">
+							<input type="text" class="js-datepicker form-control" name="to_date" id="to_date" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Akhir" required>
+						</div>
+						<div class="col-4">
+							<button type="submit" name="filter" id="filter" class="btn btn-warning">Filter</button>
+							<button type="button" name="refresh" id="refresh" title="Refresh" class="btn btn-secondary"><i class="fa fa-redo"></i></button>
+						</div>
+						<div class="col-lg-3"></div>
+						
 					</div>
-					<div class="col-2 text-center">
-						<span>s/d</span>
-					</div>
-					<div class="col-5">
-						<input type="text" class="js-datepicker form-control" id="max" name="max" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Akhir" required>
-					</div>
-
-
-					
-				</div>
+				</form>
 				
 				<!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
 				<table id="tb_sales_rekap" class="table table-bordered table-striped" width="1015px">
 					<thead class="thead-dark text-center align-middle">
 						<tr>
-							<th style="font-size: 13px;" class="align-middle">No</th>
+							<th style="font-size: 13px;" class="align-middle">ID</th>
 							<th style="font-size: 13px;" class="align-middle">NIK</th>
 							<th style="font-size: 13px;" class="align-middle">ID Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Nama Dealer</th>
@@ -83,7 +91,7 @@
 							<td>{{$data->nik}}</td>
 							<td>{{$data->id_dealer}}</td>
 							<td>{{$data->nama_dealer}}</td>
-							<td>{{date('d-m-Y H:i', strtotime($data->tgl_kunjungan))}}</td>
+							<td>{{date('d/m/Y', strtotime($data->tgl_kunjungan))}}</td>
 							<td><a href="https://maps.google.com/?q={{$data->lat}},{{$data->lng}}" target="_blank">
 								<img src="{{asset('public/assets/media/favicons/map.svg')}}" width="30" height="30" title="Lihat lokasi">
 							</a></td>

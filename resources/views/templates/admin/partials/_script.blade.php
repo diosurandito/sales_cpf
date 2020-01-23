@@ -89,6 +89,7 @@
             } );
         </script>
         <script type="text/javascript">
+
             $(document).ready(function() {
                 var table = $('#tb_dealer').DataTable( {
                     scrollY:        "80vh",
@@ -104,68 +105,64 @@
             } );
         </script>
         <script type="text/javascript">
-
             $(document).ready(function() {
-                var table = $('#tb_sales_rekap').DataTable( {
-                    scrollY:        "100vh",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         true,
-                    pageLength: 50,
-                    //autoWidth: true,
-                    
-
-                } );
-                // Add event listeners to the two range filtering inputs
-                $('#min').keyup( function() { table.draw(); } );
-                $('#max').keyup( function() { table.draw(); } );
+              var dTable = $('#tb_sales_rekap').dataTable( {
+                scrollY:        "100vh",
+                scrollX:        true,
+                scrollCollapse: true,
+                paging:         true,
+                pageLength: 50,
+                fixedColumns:   {
+                    leftColumns: 2
+                }
             } );
-        </script>
-
-        <script type="text/javascript">
-            var rupiah = document.getElementById("rupiah");
-            rupiah.addEventListener("keyup", function(e) {
-
-              rupiah.value = formatRupiah(this.value, "Rp. ");
           });
+      </script>
 
-            
-            function formatRupiah(angka, prefix) {
-              var number_string = angka.replace(/[^,\d]/g, "").toString(),
-              split = number_string.split(","),
-              sisa = split[0].length % 3,
-              rupiah = split[0].substr(0, sisa),
-              ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+      <script type="text/javascript">
+        var rupiah = document.getElementById("rupiah");
+        rupiah.addEventListener("keyup", function(e) {
+
+          rupiah.value = formatRupiah(this.value, "Rp. ");
+      });
 
 
-              if (ribuan) 
-              {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");}
+        function formatRupiah(angka, prefix) {
+          var number_string = angka.replace(/[^,\d]/g, "").toString(),
+          split = number_string.split(","),
+          sisa = split[0].length % 3,
+          rupiah = split[0].substr(0, sisa),
+          ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-                rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-                return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-            }
 
-        </script>
+          if (ribuan) 
+          {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");}
 
-        <script type="text/javascript">
-            $("#thn_kendaraan").datepicker({
-                format: "yyyy",
-                viewMode: "years", 
-                minViewMode: "years",
-                autoclose: true
-                
-            });
-        </script>
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+        }
 
-        <script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
-        <!-- Page JS Code -->
-        <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
-        <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
-        <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
-        
+    </script>
+
+    <script type="text/javascript">
+        $("#thn_kendaraan").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years",
+            autoclose: true
+
+        });
+    </script>
+
+    <script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
+    <!-- Page JS Code -->
+    <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
+    <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
+    <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
+
 
 
 
