@@ -15,6 +15,8 @@ Route::get('/', function () {
 	return redirect()->route('admlogin');
 })->name('login');
 
+
+Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
 Route::group(['prefix' => '/'], function()
 {
 	//AUTHADMIN
@@ -32,7 +34,7 @@ Route::group(['prefix' => '/'], function()
 	Route::patch('dealer/update/{id}', 'Admin\DealerController@update')->name('admin.dealer.update');
 
 	//Sales Rekap
-	Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
+	
 	Route::post('sales-rekap/filter', 'Admin\SalesRekapController@filter')->name('admin.salesrekap.index.filter');
 
 

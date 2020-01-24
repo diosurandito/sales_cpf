@@ -23,6 +23,31 @@ class SalesRekapController extends Controller
 		->orderBy('sales_rekaps.id', 'DESC')
 		->get();
 
+		// foreach ($salesrkp as $key) {
+		// 	$detail = $dbbaru = DB::connection('mysql2')
+		// 	->table('master_karyawan')
+		// 	->select(DB::raw('nama'))
+		// 	->where('nik', $key->nik)
+		// 	->get();
+
+		// 	$salesrkp->push($detail);
+		// }
+		
+		$salesrkp->map(function ($salesrkp) {
+			$detail = DB::connection('mysql2')
+			->table('master_karyawan')
+			->select('nama')
+			->where('nik', $salesrkp->nik)
+			->get()->first();
+
+
+				$salesrkp->nama = $detail->nama;
+				return $salesrkp;
+		
+		});
+
+		
+
 		// $karyawan = DB::connection('mysql2')
 		// ->table('master_karyawan')
 		// ->select('nama')
@@ -40,7 +65,6 @@ class SalesRekapController extends Controller
 		// 	}
 		// }
 
-		// return dd($karyawan);
 
 		return view('pages.admin.salesrekap', compact('salesrkp'));
 
