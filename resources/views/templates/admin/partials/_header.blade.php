@@ -25,22 +25,22 @@
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded" src="{{ asset('public/images/'.Auth::user()->foto) }}" alt="" style="width: 18px;">
+                    <img class="rounded" src="{{ asset('public/images/avatar/user.svg') }}" alt="" style="width: 18px;">
                     <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->nama }}</span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-primary-lighter">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('public/images/'.Auth::user()->foto) }}" alt="">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('public/images/avatar/user.svg') }}" alt="">
                     </div>
                     <div class="p-2">
-                        <h5 class="dropdown-header text-uppercase">User Options</h5>
+                        <!-- <h5 class="dropdown-header text-uppercase">User Options</h5>
 
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="">
                             <span>Profile</span>
                             <span><i class="si si-user ml-1"></i></span>
                         </a>
-                        <div role="separator" class="dropdown-divider"></div>
+                        <div role="separator" class="dropdown-divider"></div> -->
                         <h5 class="dropdown-header text-uppercase">Actions</h5>
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('admlogout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <span>Log Out</span>

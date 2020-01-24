@@ -42,7 +42,7 @@ Route::group(['prefix' => '/'], function()
 	Route::get('print-sticker/{id}', 'Admin\DealerController@printstkr')->name('admin.dealer.printstkr.id');
 
 	//Unautho
-	Route::get('unauthorized', 'Admin\AuthAdminController@unauthorized')->name('unauthorized');
+	
 
 
 });

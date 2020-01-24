@@ -63,19 +63,20 @@
 						</div>
 						<div class="col-4">
 							<button type="submit" name="filter" id="filter" class="btn btn-warning">Filter</button>
-							<button type="button" name="refresh" id="refresh" title="Refresh" class="btn btn-secondary"><i class="fa fa-redo"></i></button>
+							<a href="{{ route('admin.salesrekap.index')}}" name="refresh" id="refresh" title="Refresh" class="btn btn-secondary"><i class="fa fa-redo"></i></a>
 						</div>
 						<div class="col-lg-3"></div>
-						
+
 					</div>
 				</form>
-				
+
 				<!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
 				<table id="tb_sales_rekap" class="table table-bordered table-striped" width="1015px">
 					<thead class="thead-dark text-center align-middle">
 						<tr>
 							<th style="font-size: 13px;" class="align-middle">ID</th>
 							<th style="font-size: 13px;" class="align-middle">NIK</th>
+							<!-- <th style="font-size: 13px;" class="align-middle">Nama</th> -->
 							<th style="font-size: 13px;" class="align-middle">ID Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Nama Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Tanggal Kunjungan</th>
@@ -89,16 +90,16 @@
 						<tr>
 							<td>{{$no}}</td>
 							<td>{{$data->nik}}</td>
+							<!-- <td></td> -->
 							<td>{{$data->id_dealer}}</td>
 							<td>{{$data->nama_dealer}}</td>
-							<td>{{date('d/m/Y', strtotime($data->tgl_kunjungan))}}</td>
+							<td>{{date('d-m-Y H:i', strtotime($data->tgl_kunjungan))}}</td>
 							<td><a href="https://maps.google.com/?q={{$data->lat}},{{$data->lng}}" target="_blank">
 								<img src="{{asset('public/assets/media/favicons/map.svg')}}" width="30" height="30" title="Lihat lokasi">
 							</a></td>
-							
+
 						</tr>
 						@php($no++)
-						
 						@endforeach
 					</tbody>
 				</table>  
@@ -106,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 </main>
 
 

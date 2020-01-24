@@ -23,6 +23,25 @@ class SalesRekapController extends Controller
 		->orderBy('sales_rekaps.id', 'DESC')
 		->get();
 
+		// $karyawan = DB::connection('mysql2')
+		// ->table('master_karyawan')
+		// ->select('nama')
+		// ->whereIn('nik', ['201912020890', '201912020891'])
+		// ->get();
+		// $rekap = $salesrkp->merge($karyawan);
+		// $arrayName = array();
+		// while ($fetch2 = $salesrkp->toArray()) {
+		// 	$salesrkp1 = DB::connection('mysql2')
+		// 	->table('master_karyawan')
+		// 	->where('nik', '=', '$fetch2[nik]')
+		// 	->get();
+		// 	while ($fetch1 = $salesrkp1->toArray()) {
+		// 		$arrayName[]=array_merge($fetch1, $fetch2);
+		// 	}
+		// }
+
+		// return dd($karyawan);
+
 		return view('pages.admin.salesrekap', compact('salesrkp'));
 
 	}

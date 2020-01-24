@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="robots" content="noindex, nofollow">
+
 	<title>Sticker Dealer {{$data->id_dealer}}</title>
 
 	<link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/logo_jki.png') }}">
@@ -70,38 +72,38 @@
 				</div>
 				<!-- </div> -->
 				<!-- </div> -->
-			<!-- END Invoice -->
+				<!-- END Invoice -->
 
 
 
-			<script type="text/javascript" src="{{ asset('public/assets/bs4/js/jquery.dataTables.min.js')}}"></script>
-			<script type="text/javascript" src="{{ asset('public/assets/bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-			<script type="text/javascript" src="{{ asset('public/assets/bs4/js/dataTables.fixedColumns.min.js')}}"></script>
+				<script type="text/javascript" src="{{ asset('public/assets/bs4/js/jquery.dataTables.min.js')}}"></script>
+				<script type="text/javascript" src="{{ asset('public/assets/bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+				<script type="text/javascript" src="{{ asset('public/assets/bs4/js/dataTables.fixedColumns.min.js')}}"></script>
 
-			<script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
 
-			<!-- Page JS Helpers (Select2 plugin) -->
+				<!-- Page JS Helpers (Select2 plugin) -->
 
 
-			<!-- Page JS Code -->
-			<script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
+				<!-- Page JS Code -->
+				<script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
 
-			<!-- Page JS Plugins -->
-			<script src="{{ asset('public/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/dropzone/dropzone.min.js') }}"></script>
+				<!-- Page JS Plugins -->
+				<script src="{{ asset('public/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/dropzone/dropzone.min.js') }}"></script>
 
-			<script>jQuery(function(){ One.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider']); });</script>
-			<script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-			<script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
-			<!-- Page JS Code -->
-			<script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
+				<script>jQuery(function(){ One.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider']); });</script>
+				<script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+				<script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
+				<!-- Page JS Code -->
+				<script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
 
-			<script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
-		</body>
-		</html>
+				<script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
+			</body>
+			</html>

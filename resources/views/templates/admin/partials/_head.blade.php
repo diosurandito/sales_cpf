@@ -6,7 +6,6 @@
     <title>Sales_CPF1</title>
 
     <meta name="description" content="Sales_CPF1">
-    <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
