@@ -23,22 +23,18 @@ class SalesRekapController extends Controller
 		->orderBy('sales_rekaps.id', 'DESC')
 		->get();
 
-		// $karyawan = DB::connection('mysql2')
-		// ->table('master_karyawan')
-		// ->select('nama')
-		// ->whereIn('nik', ['201912020890', '201912020891'])
-		// ->get();
-		// $rekap = $salesrkp->merge($karyawan);
-		// $arrayName = array();
-		// while ($fetch2 = $salesrkp->toArray()) {
-		// 	$salesrkp1 = DB::connection('mysql2')
-		// 	->table('master_karyawan')
-		// 	->where('nik', '=', '$fetch2[nik]')
-		// 	->get();
-		// 	while ($fetch1 = $salesrkp1->toArray()) {
-		// 		$arrayName[]=array_merge($fetch1, $fetch2);
-		// 	}
-		// }
+		$salesrkp->map(function ($salesrkp) {
+			$detail = DB::connection('mysql2')
+			->table('master_karyawan')
+			->select('nama')
+			->where('nik', $salesrkp->nik)
+			->get()->first();
+
+
+			$salesrkp->nama = $detail->nama;
+			return $salesrkp;
+
+		});
 
 		// return dd($karyawan);
 
@@ -55,6 +51,19 @@ class SalesRekapController extends Controller
 		->whereBetween('sales_rekaps.tgl_kunjungan', [date('y-m-d', strtotime($request->from_date)), date('y-m-d', strtotime($request->to_date))])
 		->orderBy('sales_rekaps.id', 'DESC')
 		->get();
+
+		$salesrkp->map(function ($salesrkp) {
+			$detail = DB::connection('mysql2')
+			->table('master_karyawan')
+			->select('nama')
+			->where('nik', $salesrkp->nik)
+			->get()->first();
+
+
+			$salesrkp->nama = $detail->nama;
+			return $salesrkp;
+			
+		});
 
 		// return dd($request->from_date, $request->to_date);
 

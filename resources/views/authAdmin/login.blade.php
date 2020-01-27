@@ -8,6 +8,7 @@
   <title>Login Sales CPF1</title>
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="robots" content="noindex, nofollow">
   
   <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/logocpf1.png') }}">
   <link rel="stylesheet" href="{{ asset('public/adminLTE/bootstrap/css/bootstrap.min.css') }}">
@@ -75,15 +76,15 @@
 
     </div>
     <div class="form-group has-feedback">
-      <input type="password" class="form-control" placeholder="Password" name="password" required>
+      <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
       <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
 
     <div class="row">
-      <div class="col-xs-8">
-        <div class="checkbox icheck">
+      <div class="col-md-8">
+        <div class="checkbox">
           <label>
-            <input type="checkbox" {{ old('remember') ? 'checked' : '' }}> Remember Me
+            <input type="checkbox" style="width: 1,25rem; height: 1,25rem;" onclick="showPassword()"> <a style="color: black;">Tampilkan Password</a>
           </label>
         </div>
       </div>
@@ -102,7 +103,7 @@
 <script src="{{ asset('public/adminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('public/adminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('public/adminLTE/plugins/iCheck/icheck.min.js') }}"></script>
-<script>
+<!-- <script>
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
@@ -110,6 +111,17 @@
       increaseArea: '20%' 
     });
   });
+
+</script> -->
+<script type="text/javascript">
+  function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 </script>
 </body>
 </html>

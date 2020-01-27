@@ -76,7 +76,7 @@
 						<tr>
 							<th style="font-size: 13px;" class="align-middle">ID</th>
 							<th style="font-size: 13px;" class="align-middle">NIK</th>
-							<!-- <th style="font-size: 13px;" class="align-middle">Nama</th> -->
+							<th style="font-size: 13px;" class="align-middle">Nama</th>
 							<th style="font-size: 13px;" class="align-middle">ID Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Nama Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Tanggal Kunjungan</th>
@@ -90,7 +90,7 @@
 						<tr>
 							<td>{{$no}}</td>
 							<td>{{$data->nik}}</td>
-							<!-- <td></td> -->
+							<td>{{$data->nama}}</td>
 							<td>{{$data->id_dealer}}</td>
 							<td>{{$data->nama_dealer}}</td>
 							<td>{{date('d-m-Y H:i', strtotime($data->tgl_kunjungan))}}</td>

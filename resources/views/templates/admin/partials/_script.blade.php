@@ -58,41 +58,26 @@
         <!-- <script type="text/javascript" src="{{ asset('public/assets/js/dataTables.fixedColumns.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('public/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script> -->
 
-        <!-- <script type="text/javascript">
-            $(document).ready(function() {
-                var table = $('#tb_rekap').DataTable( {
-                    scrollY:        "500px",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         false,
-                    
-                    fixedColumns:   {
-                        leftColumns: 3
-                    },
+            <script type="text/javascript">
 
+                $(document).ready(function() {
+                    var table = $('#tb_dealer').DataTable( {
+                        scrollY:        "80vh",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        paging:         true,
+                        pageLength: 50,
+                        fixedColumns:   {
+                            leftColumns: 3
+                        }
+                        
+                    } );
                 } );
-            } );
-        </script> -->
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var table = $('#tb_rekap').DataTable( {
-                    scrollY:        "70vh",
-                    scrollX:        true,
-                    scrollCollapse: true,
-                    paging:         true,
-                    pageLength: 25,
-                    fixedColumns:   {
-                        leftColumns: 3
-                    }
-                } );
-            } );
-        </script>
-        <script type="text/javascript">
-
-            $(document).ready(function() {
-                var table = $('#tb_dealer').DataTable( {
-                    scrollY:        "80vh",
+            </script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                  var dTable = $('#tb_sales_rekap').dataTable( {
+                    scrollY:        "100vh",
                     scrollX:        true,
                     scrollCollapse: true,
                     paging:         true,
@@ -100,68 +85,53 @@
                     fixedColumns:   {
                         leftColumns: 3
                     }
-                    
                 } );
-            } );
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-              var dTable = $('#tb_sales_rekap').dataTable( {
-                scrollY:        "100vh",
-                scrollX:        true,
-                scrollCollapse: true,
-                paging:         true,
-                pageLength: 50,
-                fixedColumns:   {
-                    leftColumns: 2
-                }
-            } );
+              });
+          </script>
+
+          <script type="text/javascript">
+            var rupiah = document.getElementById("rupiah");
+            rupiah.addEventListener("keyup", function(e) {
+
+              rupiah.value = formatRupiah(this.value, "Rp. ");
           });
-      </script>
-
-      <script type="text/javascript">
-        var rupiah = document.getElementById("rupiah");
-        rupiah.addEventListener("keyup", function(e) {
-
-          rupiah.value = formatRupiah(this.value, "Rp. ");
-      });
 
 
-        function formatRupiah(angka, prefix) {
-          var number_string = angka.replace(/[^,\d]/g, "").toString(),
-          split = number_string.split(","),
-          sisa = split[0].length % 3,
-          rupiah = split[0].substr(0, sisa),
-          ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            function formatRupiah(angka, prefix) {
+              var number_string = angka.replace(/[^,\d]/g, "").toString(),
+              split = number_string.split(","),
+              sisa = split[0].length % 3,
+              rupiah = split[0].substr(0, sisa),
+              ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
 
-          if (ribuan) 
-          {
-            separator = sisa ? "." : "";
-            rupiah += separator + ribuan.join(".");}
+              if (ribuan) 
+              {
+                separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");}
 
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-        }
+                rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+                return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+            }
 
-    </script>
+        </script>
 
-    <script type="text/javascript">
-        $("#thn_kendaraan").datepicker({
-            format: "yyyy",
-            viewMode: "years", 
-            minViewMode: "years",
-            autoclose: true
+        <script type="text/javascript">
+            $("#thn_kendaraan").datepicker({
+                format: "yyyy",
+                viewMode: "years", 
+                minViewMode: "years",
+                autoclose: true
 
-        });
-    </script>
+            });
+        </script>
 
-    <script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
-    <!-- Page JS Code -->
-    <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
-    <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
-    <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
+        <script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+        <script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
+        <!-- Page JS Code -->
+        <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
+        <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
+        <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
 
 
 
