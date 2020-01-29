@@ -77,7 +77,7 @@
             <script type="text/javascript">
                 $(document).ready(function() {
                   var dTable = $('#tb_sales_rekap').dataTable( {
-                    scrollY:        "100vh",
+                    scrollY:        "80vh",
                     scrollX:        true,
                     scrollCollapse: true,
                     paging:         true,

@@ -44,17 +44,39 @@ class SalesRekapController extends Controller
 
 	public function filter(Request $request)
 	{
-		$from_date = date('y-m-d 23:59:59', strtotime($request->from_date));
-		$to_date = date('y-m-d 23:59:59', strtotime($request->to_date));
+		$from_date = date('Y-m-d 23:59:59', strtotime($request->from_date));
+		$to_date = date('Y-m-d 23:59:59', strtotime($request->to_date));
 
-		$salesrkp = DB::table('sales_rekaps')
-		->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-		->select('sales_rekaps.*', 'dealers.nama_dealer')
-		->whereBetween('sales_rekaps.tgl_kunjungan', [$from_date, $to_date])
-		->orderBy('sales_rekaps.id', 'DESC')
-		->get();
+		$one_date = substr($from_date, 0, 10);
+		$fd = date('d-m-Y', strtotime($from_date));
+		$td = date('d-m-Y', strtotime($to_date));
 
+		if ($from_date == $to_date) 
+		{
+			$salesrkp = DB::table('sales_rekaps')
+			->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
+			->select('sales_rekaps.*', 'dealers.nama_dealer')
+			->whereDate('sales_rekaps.tgl_kunjungan', $one_date)
+			->orderBy('sales_rekaps.id', 'DESC')
+			->get();
+		}
 
+		elseif ($from_date < $to_date) 
+		{
+			$salesrkp = DB::table('sales_rekaps')
+			->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
+			->select('sales_rekaps.*', 'dealers.nama_dealer')
+			->whereBetween('sales_rekaps.tgl_kunjungan', [$from_date, $to_date])
+			->orderBy('sales_rekaps.id', 'DESC')
+			->get();
+		}
+
+		else
+		{
+			return redirect()->route('admin.salesrekap.index')->with('failed', 'Tanggal tidak valid! Tanggal akhir tidak boleh kurang dari Tanggal awal');
+			
+			
+		}
 
 		$salesrkp->map(function ($salesrkp) {
 			$detail = DB::connection('mysql2')
@@ -69,9 +91,9 @@ class SalesRekapController extends Controller
 
 		});
 
-		//return dd($to_date);
+		// return dd($one_date);
 
-		return view('pages.admin.salesrekap', compact('salesrkp'));
+		return view('pages.admin.salesrekap', compact('salesrkp', 'td', 'fd'));
 
 	}
 }
