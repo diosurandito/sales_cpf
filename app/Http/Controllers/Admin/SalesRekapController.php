@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SalesRekap;
 use DB;
+use Carbon\Carbon;
 
 
 class SalesRekapController extends Controller
@@ -17,9 +18,14 @@ class SalesRekapController extends Controller
 
 	public function index()
 	{
+		$month = Carbon::now()->format('m');
+		$year = Carbon::now()->format('Y');
+
 		$salesrkp = DB::table('sales_rekaps')
 		->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
 		->select('sales_rekaps.*', 'dealers.nama_dealer')
+		->whereMonth('sales_rekaps.tgl_kunjungan', '=', $month)
+		->whereYear('sales_rekaps.tgl_kunjungan', '=', $year)
 		->orderBy('sales_rekaps.id', 'DESC')
 		->get();
 

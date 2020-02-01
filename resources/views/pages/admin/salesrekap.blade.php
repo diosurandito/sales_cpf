@@ -23,6 +23,23 @@ function tanggal_indo($tanggal)
 }
 @endphp -->
 
+@php
+$bulan = array(
+'01' => 'Januari',
+'02' => 'Februari',
+'03' => 'Maret',
+'04' => 'April',
+'05' => 'Mei',
+'06' => 'Juni',
+'07' => 'Juli',
+'08' => 'Agustus',
+'09' => 'September',
+'10' => 'Oktober',
+'11' => 'November',
+'12' => 'Desember',
+);
+@endphp
+
 
 <main id="main-container">
 
@@ -77,8 +94,13 @@ function tanggal_indo($tanggal)
 		@endif
 		<div class="block">
 			<div class="block-header" style="background: #b54242;">
+				@if(Request::is('sales-rekap'))
+				<h2 class="block-title text-white">Data Rekap Kunjungan Sales</h2> <h2 class="block-title text-white" style="text-align: right;"><img src="{{asset('public/assets/media/favicons/calendar.svg')}}" width="22" height="22"> &nbsp;@php echo $bulan[date('m')] .' '. date('Y'); @endphp</h2>
+				@else
 				<h2 class="block-title text-white">Data Rekap Kunjungan Sales</h2>
-				
+				@endif
+
+
 			</div>
 			<div class="block-content block-content-full">
 				<form action="{{ route('admin.salesrekap.index.filter')}}" method="post">
@@ -87,13 +109,13 @@ function tanggal_indo($tanggal)
 					<div class="row mb-2 mt-0" style="margin-bottom: 5px;">
 						
 						<div class="col-2">
-							<input type="text" class="js-datepicker form-control" name="from_date" id="from_date" @if(empty($fd)) value="" @else value="{{$fd}}" @endif data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Awal" required>
+							<input type="text" class="js-datepicker form-control" name="from_date" id="from_date" @if(empty($fd)) value="" @else value="{{$fd}}" @endif data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Awal" autocomplete="off" required>
 						</div>
 						<div class="col-xs-1 mt-2 text-center align-middle">
 							s/d
 						</div>
 						<div class="col-2">
-							<input type="text" class="js-datepicker form-control" name="to_date" id="to_date" @if(empty($td)) value="" @else value="{{$td}}" @endif data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Akhir" required>
+							<input type="text" class="js-datepicker form-control" name="to_date" id="to_date" @if(empty($td)) value="" @else value="{{$td}}" @endif data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="dd-mm-yyyy" placeholder="Tanggal Akhir" autocomplete="off" required>
 						</div>
 						<div class="col-4">
 							<button type="submit" name="filter" id="filter" class="btn btn-warning">Filter</button>

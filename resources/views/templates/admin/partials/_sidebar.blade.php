@@ -7,9 +7,11 @@
     <div class="content-header" style="background-color: #ffffff96;">
         <!-- Logo -->
         <a class="font-w600 text-dual" href="">
-            <img src="{{ asset('public/assets/media/photos/logocpf1.png') }}" style="width: 30px;">
+            <!-- <img src="{{ asset('public/assets/media/photos/logocpf1.png') }}" style="width: 30px;"> -->
             <span class="smini-hide">
-                <span class="font-w700 font-size-h5" style="color: black">&nbsp;Sales_CPF1</span>
+                <img src="{{ asset('public/assets/media/photos/cpf1_sm.png') }}" style="width: 55px;">&nbsp;&nbsp;
+                <img src="{{ asset('public/assets/media/photos/sunmaster_sm.png') }}" style="width: 122px;">
+                <!-- <span class="font-w700 font-size-h5" style="color: black">&nbsp;Sales_CPF1</span> -->
             </span>
         </a>
         <!-- END Logo -->

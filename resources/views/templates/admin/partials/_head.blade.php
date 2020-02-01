@@ -3,15 +3,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Sales_CPF1</title>
+    <title>CPF1_SUNMASTER</title>
 
-    <meta name="description" content="Sales_CPF1">
+    <meta name="description" content="CPF1_SUNMASTER">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Sales_CPF1">
-    <meta property="og:site_name" content="Sales_CPF1">
-    <meta property="og:description" content="Sistem Sales_CPF1">
+    <meta property="og:title" content="CPF1_SUNMASTER">
+    <meta property="og:site_name" content="CPF1_SUNMASTER">
+    <meta property="og:description" content="CPF1_SUNMASTER">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -20,9 +20,9 @@
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/logocpf1.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/assets/media/photos/logo_jki.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/assets/media/photos/logo_jki.png') }}">
+    <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
     <!-- END Icons -->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/dataTables.bootstrap4.min.css')}}">
