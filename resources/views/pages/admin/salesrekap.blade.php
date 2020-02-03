@@ -48,7 +48,7 @@ $bulan = array(
 		<div class="content content-full">
 			<div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
 				<h1 class="flex-sm-fill h3 my-2">
-					Data Rekap Kunjungan Sales CPF1
+					Data Rekap Kunjungan Sales
 				</h1>
 				<nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
 					<ol class="breadcrumb breadcrumb-alt">
@@ -133,8 +133,8 @@ $bulan = array(
 							<th style="font-size: 13px;" class="align-middle">No</th>
 							<th style="font-size: 13px;" class="align-middle">NIK</th>
 							<th style="font-size: 13px;" class="align-middle">Nama</th>
-							<th style="font-size: 13px;" class="align-middle">ID Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Nama Dealer</th>
+							<th style="font-size: 13px;" class="align-middle">Alamat</th>
 							<th style="font-size: 13px;" class="align-middle">Tanggal Kunjungan</th>
 							<th style="font-size: 13px;" class="align-middle">Lokasi Kunjungan</th>
 							<!-- <th style="font-size: 13px;" class="align-middle">Aksi</th> -->
@@ -147,8 +147,8 @@ $bulan = array(
 							<td>{{$no}}</td>
 							<td>{{$data->nik}}</td>
 							<td>{{$data->nama}}</td>
-							<td>{{$data->id_dealer}}</td>
-							<td>{{$data->nama_dealer}}</td>
+							<td>@if($data->id_dealer == 'DLRJKI0000') {{$data->nm_tempat}} @else {{$data->nama_dealer}} @endif</td>
+							<td>@if($data->id_dealer != 'DLRJKI0000') {{$data->d_alamat}} @else {{$data->alamat}} @endif</td>
 							<td>{{date('d-m-Y H:i', strtotime($data->tgl_kunjungan))}}</td>
 							<td><a href="https://maps.google.com/?q={{$data->lat}},{{$data->lng}}" target="_blank">
 								<img src="{{asset('public/assets/media/favicons/map.svg')}}" width="30" height="30" title="Lihat lokasi">

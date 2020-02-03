@@ -18,6 +18,7 @@ class DealerController extends Controller
 	{
 		$dealer = Dealer::select('*')
 		->orderBy('dealers.id', 'DESC')
+		->where('id_dealer', '!=', 'DLRJKI0000')
 		->get();
 
 		$dlr = DB::table('dealers')
@@ -106,6 +107,7 @@ class DealerController extends Controller
 	public function printstkr_all()
 	{
 		$dealer = Dealer::select('*')
+		->where('id_dealer', '!=', 'DLRJKI0000')
 		->orderBy('dealers.id', 'ASC')
 		->get();
 

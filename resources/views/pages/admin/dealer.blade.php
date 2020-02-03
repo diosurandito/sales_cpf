@@ -45,7 +45,7 @@
 			<div class="block-header" style="background: #b54242;">
 				<h2 class="block-title text-white">Data Dealer</h2>
 				
-				<a href="{{ route('admin.dealer.printstkr.all') }}" class="btn btn-warning" title="Cetak Stiker">
+				<a href="{{ route('admin.dealer.printstkr.all') }}" class="btn btn-warning" title="Cetak Stiker" target="_blank">
 					<img src="{{asset('public/assets/media/favicons/printdo.svg')}}" height="23">&nbsp; Print All
 				</a>
 				<button class="btn btn-light mr-1" data-toggle="modal" data-target="#add_dealer" style="margin-left: 5px">
@@ -62,7 +62,7 @@
 						<tr>
 							<th style="font-size: 13px;" class="align-middle">No</th>
 							<th style="font-size: 13px;" class="align-middle">ID Dealer</th>
-							<th style="font-size: 13px;" class="align-middle">Nama</th>
+							<th style="font-size: 13px;" class="align-middle">Nama Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Alamat</th>
 							<th style="font-size: 13px;" class="align-middle">Kota/Kab.</th>
 							<th style="font-size: 13px;" class="align-middle">Provinsi</th>
@@ -206,7 +206,7 @@
 								<div class="modal-content">
 									<div class="block block-themed block-transparent mb-0">
 										<div class="block-header" style="background: #b54242;">
-											<h3 class="block-title">Ubah Data Dealer ({{$id_dealer}})</h3>
+											<h3 class="block-title">Ubah Data Dealer ({{$data->id_dealer}})</h3>
 											<div class="block-options">
 												<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
 													<i class="fa fa-fw fa-times"></i>

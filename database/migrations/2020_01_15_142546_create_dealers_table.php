@@ -17,7 +17,7 @@ class CreateDealersTable extends Migration
             $table->bigIncrements('id');
             $table->string('id_dealer', 10);
             $table->string('nama_dealer', 60);
-            $table->string('alamat', 150);
+            $table->string('alamat', 160);
             $table->string('kota', 40);
             $table->string('provinsi', 40);
             $table->string('kontak_person', 60);

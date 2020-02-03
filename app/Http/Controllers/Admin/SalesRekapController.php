@@ -23,7 +23,7 @@ class SalesRekapController extends Controller
 
 		$salesrkp = DB::table('sales_rekaps')
 		->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-		->select('sales_rekaps.*', 'dealers.nama_dealer')
+		->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat')
 		->whereMonth('sales_rekaps.tgl_kunjungan', '=', $month)
 		->whereYear('sales_rekaps.tgl_kunjungan', '=', $year)
 		->orderBy('sales_rekaps.id', 'DESC')
@@ -61,7 +61,7 @@ class SalesRekapController extends Controller
 		{
 			$salesrkp = DB::table('sales_rekaps')
 			->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-			->select('sales_rekaps.*', 'dealers.nama_dealer')
+			->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat')
 			->whereDate('sales_rekaps.tgl_kunjungan', $one_date)
 			->orderBy('sales_rekaps.id', 'DESC')
 			->get();
@@ -71,7 +71,7 @@ class SalesRekapController extends Controller
 		{
 			$salesrkp = DB::table('sales_rekaps')
 			->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-			->select('sales_rekaps.*', 'dealers.nama_dealer')
+			->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat')
 			->whereBetween('sales_rekaps.tgl_kunjungan', [$from_date, $to_date])
 			->orderBy('sales_rekaps.id', 'DESC')
 			->get();
