@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SalesRekap;
 use DB;
+use Auth;
 use Carbon\Carbon;
 
 
@@ -18,12 +19,20 @@ class SalesRekapController extends Controller
 
 	public function index()
 	{
+		$nik = Auth::user()->nik;
+		$sales = DB::table('sales_admins')
+		->select('*')
+		->where('nik', '=', $nik)
+		->first();
+
 		$month = Carbon::now()->format('m');
 		$year = Carbon::now()->format('Y');
 
 		$salesrkp = DB::table('sales_rekaps')
+		->join('sales_admins', 'sales_admins.nik', '=', 'sales_rekaps.nik')
 		->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-		->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat')
+		->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat', 'sales_admins.nik as sadm_nik', 'sales_admins.kode_akses')
+		->where('sales_admins.kode_akses', '=', $sales->kode_akses)
 		->whereMonth('sales_rekaps.tgl_kunjungan', '=', $month)
 		->whereYear('sales_rekaps.tgl_kunjungan', '=', $year)
 		->orderBy('sales_rekaps.id', 'DESC')
@@ -44,13 +53,19 @@ class SalesRekapController extends Controller
 
 		// return dd($karyawan);
 
-		return view('pages.admin.salesrekap', compact('salesrkp'));
+		return view('pages.admin.salesrekap', compact('salesrkp', 'sales'));
 
 	}
 
 	public function filter(Request $request)
 	{
-		$from_date = date('Y-m-d 23:59:59', strtotime($request->from_date));
+		$nik = Auth::user()->nik;
+		$sales = DB::table('sales_admins')
+		->select('*')
+		->where('nik', '=', $nik)
+		->first();
+
+		$from_date = date('Y-m-d 00:00:01', strtotime($request->from_date));
 		$to_date = date('Y-m-d 23:59:59', strtotime($request->to_date));
 
 		$one_date = substr($from_date, 0, 10);
@@ -60,8 +75,10 @@ class SalesRekapController extends Controller
 		if ($from_date == $to_date) 
 		{
 			$salesrkp = DB::table('sales_rekaps')
+			->join('sales_admins', 'sales_admins.nik', '=', 'sales_rekaps.nik')
 			->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-			->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat')
+			->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat', 'sales_admins.nik as sadm_nik', 'sales_admins.kode_akses')
+			->where('sales_admins.kode_akses', '=', $sales->kode_akses)
 			->whereDate('sales_rekaps.tgl_kunjungan', $one_date)
 			->orderBy('sales_rekaps.id', 'DESC')
 			->get();
@@ -70,8 +87,10 @@ class SalesRekapController extends Controller
 		elseif ($from_date < $to_date) 
 		{
 			$salesrkp = DB::table('sales_rekaps')
+			->join('sales_admins', 'sales_admins.nik', '=', 'sales_rekaps.nik')
 			->join('dealers', 'dealers.id_dealer', '=', 'sales_rekaps.id_dealer')
-			->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat')
+			->select('sales_rekaps.*', 'dealers.nama_dealer', 'dealers.alamat as d_alamat', 'sales_admins.nik as sadm_nik', 'sales_admins.kode_akses')
+			->where('sales_admins.kode_akses', '=', $sales->kode_akses)
 			->whereBetween('sales_rekaps.tgl_kunjungan', [$from_date, $to_date])
 			->orderBy('sales_rekaps.id', 'DESC')
 			->get();
@@ -80,8 +99,6 @@ class SalesRekapController extends Controller
 		else
 		{
 			return redirect()->route('admin.salesrekap.index')->with('failed', 'Tanggal tidak valid! Tanggal akhir tidak boleh kurang dari Tanggal awal');
-			
-			
 		}
 
 		$salesrkp->map(function ($salesrkp) {
@@ -99,7 +116,7 @@ class SalesRekapController extends Controller
 
 		// return dd($one_date);
 
-		return view('pages.admin.salesrekap', compact('salesrkp', 'td', 'fd'));
+		return view('pages.admin.salesrekap', compact('salesrkp', 'td', 'fd', 'sales'));
 
 	}
 }

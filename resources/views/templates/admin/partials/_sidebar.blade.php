@@ -4,14 +4,12 @@
 
 <nav id="sidebar" aria-label="Main Navigation">
     <!-- Side Header -->
-    <div class="content-header" style="background-color: #ffffff96;">
+    <div class="content-header" style="background-color: #f3f3f3c7;padding-left: 12px;">
         <!-- Logo -->
         <a class="font-w600 text-dual" href="">
-            <!-- <img src="{{ asset('public/assets/media/photos/logocpf1.png') }}" style="width: 30px;"> -->
+            <img src="{{ asset('public/images/logo/logo_jki.png') }}" style="width: 35px;">
             <span class="smini-hide">
-                <img src="{{ asset('public/assets/media/photos/cpf1_sm.png') }}" style="width: 55px;">&nbsp;&nbsp;
-                <img src="{{ asset('public/assets/media/photos/sunmaster_sm.png') }}" style="width: 122px;">
-                <!-- <span class="font-w700 font-size-h5" style="color: black">&nbsp;Sales_CPF1</span> -->
+                <span class="font-w700 font-size-h5 text-dark">&nbsp;Sistem RKS JKI</span>
             </span>
         </a>
         <!-- END Logo -->

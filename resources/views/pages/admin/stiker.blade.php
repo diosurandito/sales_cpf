@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	
 	<meta name="robots" content="noindex, nofollow">
 
 	<title>Sticker Dealer</title>
@@ -24,7 +24,7 @@
 	<script src="{{ asset('public/assets/js/oneui.core.min.js') }}"></script>
 
 	<script src="{{ asset('public/assets/js/oneui.app.min.js') }}"></script>
-	<link rel="stylesheet" href="{{asset('public/css/paper.css')}}">
+	<!-- <link rel="stylesheet" href="{{asset('public/css/paper.css')}}"> -->
 
 	<style>@page { size: A4 }</style>
 	<style type="text/css">
@@ -50,7 +50,7 @@
 			</div>
 		</div> -->
 		<!-- <div class="block-content"> -->
-			<div class="p-sm-4 p-xl-7">
+			<div class="p-sm-4 p-xl-8">
 				<div class="row">
 					@foreach($dealer as $data)
 					<div class="card mb-3 mr-3" style="width: 12rem; border-style: solid;border-width: 5px; border-color: #656565;">

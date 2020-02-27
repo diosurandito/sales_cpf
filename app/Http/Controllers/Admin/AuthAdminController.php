@@ -41,7 +41,7 @@ class AuthAdminController extends Controller
 			->where('nik', '=', $admin->nik)
 			->first();
 			if (!empty($sales->nik)) {
-				if ($sales->kode_akses === 'salescpf_adm1') {
+				if ($sales->kode_akses === 'salescpf_adm1' || 'saleslmr_adm1' || 'salesgrb_adm1') {
 					return redirect()->route('admin.home');
 				}else{
 					Auth::guard('admin')->logout();

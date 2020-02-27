@@ -3,15 +3,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>CPF1_SUNMASTER</title>
+    <title>Sistem Rekap Kunjungan Sales JKI</title>
 
-    <meta name="description" content="CPF1_SUNMASTER">
+    <meta name="description" content="Sistem Rekap Kunjungan Sales JKI">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="CPF1_SUNMASTER">
-    <meta property="og:site_name" content="CPF1_SUNMASTER">
-    <meta property="og:description" content="CPF1_SUNMASTER">
+    <meta property="og:title" content="Sistem Rekap Kunjungan Sales JKI">
+    <meta property="og:site_name" content="Sistem Rekap Kunjungan Sales JKI">
+    <meta property="og:description" content="Sistem Rekap Kunjungan Sales JKI">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -20,9 +20,9 @@
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
+    <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/images/logo/logo_jki.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/images/logo/logo_jki.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/images/logo/logo_jki.png') }}">
     <!-- END Icons -->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/dataTables.bootstrap4.min.css')}}">

@@ -95,9 +95,9 @@ $bulan = array(
 		<div class="block">
 			<div class="block-header" style="background: #b54242;">
 				@if(Request::is('sales-rekap'))
-				<h2 class="block-title text-white">Data Rekap Kunjungan Sales</h2> <h2 class="block-title text-white" style="text-align: right;"><img src="{{asset('public/assets/media/favicons/calendar.svg')}}" width="22" height="22"> &nbsp;@php echo $bulan[date('m')] .' '. date('Y'); @endphp</h2>
+				<h2 class="block-title text-white">Data Rekap Kunjungan Sales @if($sales->kode_akses == 'saleslmr_adm1')LLumar @endif @if($sales->kode_akses == 'salescpf_adm1')CPF1 & SUNMASTER @endif @if($sales->kode_akses == 'salesgrb_adm1')GRB @endif</h2> <h2 class="block-title text-white" style="text-align: right;"><img src="{{asset('public/assets/media/favicons/calendar.svg')}}" width="22" height="22"> &nbsp;@php echo $bulan[date('m')] .' '. date('Y'); @endphp</h2>
 				@else
-				<h2 class="block-title text-white">Data Rekap Kunjungan Sales</h2>
+				<h2 class="block-title text-white">Data Rekap Kunjungan Sales @if($sales->kode_akses == 'saleslmr_adm1')LLumar @endif @if($sales->kode_akses == 'salescpf_adm1')CPF1 & SUNMASTER @endif @if($sales->kode_akses == 'salesgrb_adm1')GRB @endif</h2>
 				@endif
 
 

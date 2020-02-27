@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Login CPF1 SUNMASTER</title>
+  <title>Sistem Rekap Kunjungan Sales JKI</title>
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="robots" content="noindex, nofollow">
   
-  <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
+  <link rel="shortcut icon" sizes="32x32" href="{{ asset('public/images/logo/logo_jki.png') }}">
   <link rel="stylesheet" href="{{ asset('public/adminLTE/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('public/adminLTE/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('public/adminLTE/plugins/iCheck/square/blue.css') }}">
@@ -36,10 +36,9 @@
 
     <div class="login-box-body" style="background: #02020242;">
       <div class="login-logo">
-        <img src="{{ asset('public/assets/media/photos/cpf1_sm.png') }}" width="200">
-        <img src="{{ asset('public/assets/media/photos/sunmaster_sm.png') }}" width="200">
+        <img src="{{ asset('public/images/logo/logo_jki_text.png') }}" width="200">
       </div>
-      <p class="login-box-msg">LOGIN ADMIN</p>
+      <p class="login-box-msg">LOGIN SALES</p>
       @if(\Session::has('alert'))
 
       <div class="alert alert-danger alert-dismissable d-flex" role="alert">

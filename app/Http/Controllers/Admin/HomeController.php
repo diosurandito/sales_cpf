@@ -18,20 +18,14 @@ class HomeController extends Controller
 
 	public function index()
 	{
-		// $nik = Auth::user()->nik;
-		// $no_do = DB::table('d_orders')
-		// ->select('no_do')
-		// ->where('nik', '=', $nik)
-		// ->orderBy('id', 'DESC')
-		// ->first();
-
-		// $nodo = substr($no_do->no_do,2);
-
-		// $lnodo = (int)$nodo;
-		// $lnodo++;
-		// $nomor = sprintf("%07s", $lnodo);
+		$nik = Auth::user()->nik;
+		$sales = DB::table('sales_admins')
+		->select('*')
+		->where('nik', '=', $nik)
+		->first();
+		
 
 
-		return view('pages.admin.home');
+		return view('pages.admin.home', compact('sales'));
 	}
 }

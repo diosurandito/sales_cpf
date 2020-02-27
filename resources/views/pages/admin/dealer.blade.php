@@ -85,7 +85,7 @@
 							<td>{{$data->provinsi}}</td>
 							<td>{{$data->kontak_person}}</td>
 							<td>{{$data->no_telp}}</td>
-							<td>@if ($data->status == 1) <button type="button" class="btn btn-sm btn-outline-success" title="Aktif"><i class="lg fa fa-check-circle fa-lg"></i></button>@else <button type="button" class="btn btn-sm btn-outline-dark" title="Non-Aktif"><i class="fa fa-times-circle fa-lg"></i></button>@endif</td>
+							<td>@if ($data->status == 1) <button type="button" class="btn btn-sm btn-outline-success" style="cursor: default;" title="Aktif"><i class="lg fa fa-check-circle fa-lg"></i></button>@else <button type="button" class="btn btn-sm btn-outline-dark" style="cursor: default;" title="Non-Aktif"><i class="fa fa-times-circle fa-lg"></i></button>@endif</td>
 							<td class="text-center">
 								<a href="{{ route('admin.dealer.printstkr.id',$data->id) }}" class="btn btn-sm btn-info" target="_blank" title="Cetak Stiker">
 									<img src="{{asset('public/assets/media/favicons/printso.svg')}}" width="25" height="25">
