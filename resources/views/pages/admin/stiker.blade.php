@@ -2,14 +2,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="robots" content="noindex, nofollow">
 
 	<title>Sticker Dealer</title>
 
-	<link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
-	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
+	<link rel="shortcut icon" sizes="32x32" href="{{ asset('public/images/logo/logo_jki.png') }}">
 	<!-- END Icons -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -29,9 +27,9 @@
 	<style>@page { size: A4 }</style>
 	<style type="text/css">
 		body {
-			margin-top: 0mm;
-			margin-bottom: 0mm;
-			margin-right: 0mm;
+			margin-top: 3mm;
+			margin-bottom: 14mm;
+			margin-right: 3mm;
 			margin-left: 4mm;
 		}
 	</style>
@@ -50,19 +48,22 @@
 			</div>
 		</div> -->
 		<!-- <div class="block-content"> -->
-			<div class="p-sm-4 p-xl-8">
+			<div class="col-lg-12">
 				<div class="row">
 					@foreach($dealer as $data)
-					<div class="card mb-3 mr-3" style="width: 12rem; border-style: solid;border-width: 5px; border-color: #656565;">
-						<div class="card-header text-center">{!! QrCode::size(144)->backgroundColor(255,131,0)->margin(0)->generate($data->id_dealer); !!}
-						</div>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item text-center text-black"><b>{{$data->id_dealer}}</b></li>
-							<li class="list-group-item text-center text-black" style="font-size: 14px;">{{$data->nama_dealer}}</li>
-							<li class="list-group-item text-center text-black" style="font-size: 12px;">{{$data->alamat}}</li>
+					<div class="col-lg-2 mb-3 mt-3" style="margin-right: 0px;">
+						<div class="card mr-0" style="width: 12rem;height: 27rem;border-style: solid;border-width: 5px; border-color: #656565;">
+							<div class="card-header text-center">{!! QrCode::size(144)->backgroundColor(255,131,0)->margin(0)->generate($data->id_dealer); !!}
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item text-center text-black"><b>{{$data->id_dealer}}</b></li>
+								<li class="list-group-item text-center text-black" style="font-size: 14px;">{{$data->nama_dealer}}</li>
+								<li class="list-group-item text-center text-black" style="font-size: 12px;">{{$data->alamat}}</li>
 
-						</ul>
+							</ul>
+						</div>
 					</div>
+					
 					@endforeach
 
 				</div>
