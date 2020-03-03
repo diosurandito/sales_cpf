@@ -79,12 +79,12 @@
 						<tr>
 							<td>{{$no}}</td>
 							<td>{{$data->id_dealer}}</td>
-							<td>{{$data->nama_dealer}}</td>
-							<td>{{$data->alamat}}</td>
-							<td>{{$data->kota}}</td>
-							<td>{{$data->provinsi}}</td>
-							<td>{{$data->kontak_person}}</td>
-							<td>{{$data->no_telp}}</td>
+							<td style="text-align: left;">{{$data->nama_dealer}}</td>
+							<td style="text-align: left;">{{$data->alamat}}</td>
+							<td style="text-align: left;">{{$data->kota}}</td>
+							<td style="text-align: left;">{{$data->provinsi}}</td>
+							<td style="text-align: left;">{{$data->kontak_person}}</td>
+							<td style="text-align: left;">{{$data->no_telp}}</td>
 							<td>@if ($data->status == 1) <button type="button" class="btn btn-sm btn-outline-success" style="cursor: default;" title="Aktif"><i class="lg fa fa-check-circle fa-lg"></i></button>@else <button type="button" class="btn btn-sm btn-outline-dark" style="cursor: default;" title="Non-Aktif"><i class="fa fa-times-circle fa-lg"></i></button>@endif</td>
 							<td class="text-center">
 								<a href="{{ route('admin.dealer.printstkr.id',$data->id) }}" class="btn btn-sm btn-info" target="_blank" title="Cetak Stiker">

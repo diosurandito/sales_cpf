@@ -28,7 +28,7 @@
 	<style type="text/css">
 		body {
 			margin-top: 3mm;
-			margin-bottom: 14mm;
+			/*margin-bottom: 14mm;*/
 			margin-right: 3mm;
 			margin-left: 4mm;
 		}
