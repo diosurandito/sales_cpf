@@ -146,8 +146,8 @@ $bulan = array(
 						<tr>
 							<td>{{$no}}</td>
 							<td>{{$data->nik}}</td>
-							<td>{{$data->nama}}</td>
-							<td>@if($data->id_dealer == 'DLRJKI0000') {{$data->nm_tempat}} @else {{$data->nama_dealer}} @endif</td>
+							<td nowrap>{{$data->nama}}</td>
+							<td width="150">@if($data->id_dealer == 'DLRJKI0000') {{$data->nm_tempat}} @else {{$data->nama_dealer}} @endif</td>
 							<td>@if($data->id_dealer != 'DLRJKI0000') {{$data->d_alamat}} @else {{$data->alamat}} @endif</td>
 							<td>{{date('d-m-Y H:i', strtotime($data->tgl_kunjungan))}}</td>
 							<td><a href="https://maps.google.com/?q={{$data->lat}},{{$data->lng}}" target="_blank">

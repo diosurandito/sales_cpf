@@ -62,7 +62,7 @@
 
                 $(document).ready(function() {
                     var table = $('#tb_dealer').DataTable( {
-                        scrollY:        "80vh",
+                        scrollY:        "70vh",
                         scrollX:        true,
                         scrollCollapse: true,
                         paging:         true,

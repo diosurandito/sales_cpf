@@ -106,12 +106,12 @@
         <!-- <link rel="stylesheet" href="{{ asset('public/assets/css/jquery.dataTables.min.css') }}">
             <link rel="{{ asset('stylesheet" href="public/assets/css/fixedColumns.dataTables.min.css') }}"> -->
 
-            <style type="text/css">
+            <!-- <style type="text/css">
                 th, td { white-space: nowrap; }
                 div.dataTables_wrapper {
                     width: 100%;
                     margin: 0 auto;
                 }
-            </style>
+            </style> -->
         </head>
 
