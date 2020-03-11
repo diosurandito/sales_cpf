@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Sistem Rekap Kunjungan Sales JKI</title>
 
@@ -40,6 +41,9 @@
         <link rel="stylesheet" href="{{ asset('public/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css') }}">
         <link rel="stylesheet" href="{{ asset('public/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.skinHTML5.css') }}">
         <link rel="stylesheet" href="{{ asset('public/assets/js/plugins/dropzone/dist/min/dropzone.min.css') }}">
+
+        <link rel="stylesheet" href="{{asset('public/css/spinkit.css')}}">
+        <link rel="stylesheet" href="{{asset('public/css/spinners.css')}}">
 
         <!-- <link rel="stylesheet" href="{{ asset('public/assets/js/plugins/jquery-ui-2/jquery-ui.min.css') }}"> -->
 
@@ -98,7 +102,7 @@
                 }
             }
         </script>
-        <script src="{{ asset('public/assets/js/range_dates.js') }}"></script>
+        <!-- <script src="{{ asset('public/assets/js/range_dates.js') }}"></script> -->
 
 
 
@@ -113,5 +117,12 @@
                     margin: 0 auto;
                 }
             </style> -->
+
+            <style type="text/css">
+                td.nowrap {
+                    white-space:nowrap;
+                }
+            </style>
+
         </head>
 

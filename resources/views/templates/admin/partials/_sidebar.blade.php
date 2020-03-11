@@ -34,6 +34,12 @@
                 </a>
             </li>
             <li class="nav-main-item">
+                <a class="nav-main-link @if (Request::is('dealer-ajax')) active @elseif (Request::is('print-sticker')) active @endif" href="{{route('admin.dealer_ajax.index')}}">
+                    <i class="nav-main-link-icon fa fa-store-alt"></i>
+                    <span class="nav-main-link-name">Dealer Ajax</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
                 <a class="nav-main-link @if (Request::is('sales-rekap')) active @elseif(Request::is('sales-rekap/filter')) active @endif" href="{{route('admin.salesrekap.index')}}">
                     <i class="nav-main-link-icon fa fa-business-time"></i>
                     <span class="nav-main-link-name">Rekap Kunjungan</span>

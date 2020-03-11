@@ -33,6 +33,18 @@ Route::group(['prefix' => '/'], function()
 	Route::get('dealer/destroy/{id}','Admin\DealerController@destroy')->name('admin.dealer.destroy');
 	Route::patch('dealer/update/{id}', 'Admin\DealerController@update')->name('admin.dealer.update');
 
+	//DEALER AJAX
+	Route::get('dealer-ajax', 'Admin\DealerAjaxController@index')->name('admin.dealer_ajax.index');
+
+	Route::post('dealer-ajax/store','Admin\DealerAjaxController@store')->name('admin.dealer_ajax.store');
+
+	Route::get('dealer-ajax/edit/{id}', 'Admin\DealerAjaxController@edit')->name('admin.dealer_ajax.edit');
+	Route::patch('dealer-ajax/update', 'Admin\DealerAjaxController@update')->name('admin.dealer_ajax.update');
+
+	Route::get('dealer-ajax/destroy/{id}','Admin\DealerAjaxController@destroy')->name('admin.dealer_ajax.destroy');
+
+	
+
 	//Sales Rekap
 	Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
 	

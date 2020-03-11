@@ -57,6 +57,7 @@
 
         <!-- <script type="text/javascript" src="{{ asset('public/assets/js/dataTables.fixedColumns.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('public/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script> -->
+            <script src="https://cdn.datatables.net/plug-ins/1.10.20/dataRender/datetime.js"></script>
 
             <script type="text/javascript">
 
@@ -89,49 +90,179 @@
               });
           </script>
 
+
+          <script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+          <script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
+          <!-- Page JS Code -->
+          <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
+          <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
+          <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
+
           <script type="text/javascript">
-            var rupiah = document.getElementById("rupiah");
-            rupiah.addEventListener("keyup", function(e) {
+            //DEALER AJAX
+            $(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                // view data
+                var table = $('#tb_dealer_2').DataTable({
+                    scrollY:        "70vh",
+                    scrollX:        true,
+                    scrollCollapse: true,
+                    pageLength: 50,
+                    fixedColumns:   {
+                        leftColumns: 3
+                    },
+                    processing: true,
+                    serverSide: true,
+                    language: {
+                        processing: '<div class="wobblebar-loader"></div>',
+                        sEmptyTable:   "Tidak ada data yang tersedia pada tabel ini",
+                        sLengthMenu:   "Tampilkan _MENU_ entri",
+                        sZeroRecords:  "Tidak ditemukan data yang sesuai",
+                        sInfo:         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+                        sInfoEmpty:    "Menampilkan 0 sampai 0 dari 0 entri",
+                        sInfoFiltered: "(disaring dari _MAX_ entri keseluruhan)",
+                        sInfoPostFix:  "",
+                        sSearch:       "Cari:",
+                        sUrl:          "",
+                        oPaginate: {
+                            sFirst:    "Pertama",
+                            sPrevious: "Sebelumnya",
+                            sNext:     "Selanjutnya",
+                            sLast:     "Terakhir"
+                        }
+                    },
+                    ajax: "{{ route('admin.dealer_ajax.index') }}",
+                    columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', sClass: 'text-center'},
+                    {data: 'id_dealer', name: 'id_dealer', sClass: 'text-center'},
+                    {data: 'nama_dealer', name: 'nama_dealer', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                    {data: 'alamat', name: 'alamat', sClass: 'text-left', defaultContent: '<i>Tidak Ada</i>'},
+                    {data: 'kota', name: 'kota', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                    {data: 'provinsi', name: 'provinsi', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                    {data: 'kontak_person', name: 'kontak_person', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                    {data: 'no_telp', name: 'no_telp', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                    {data: 'status', name: 'status', sClass: 'text-center', orderable: false, searchable: false},
+                    {data: 'print', name: 'print', sClass: 'text-center', orderable: false, searchable: false},
+                    {data: 'aksi', name: 'aksi', sClass: 'text-center nowrap', orderable: false, searchable: false},
+                    ]
+                });
 
-              rupiah.value = formatRupiah(this.value, "Rp. ");
-          });
 
+                // add data
+                $('#add_dlr_btn').click(function () {
+                    $('#add_dlr_savebtn').html("Simpan");
+                });
 
-            function formatRupiah(angka, prefix) {
-              var number_string = angka.replace(/[^,\d]/g, "").toString(),
-              split = number_string.split(","),
-              sisa = split[0].length % 3,
-              rupiah = split[0].substr(0, sisa),
-              ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+                $('#add_dlr_form').on('submit', function(e) {
+                    e.preventDefault();
+                    $('#add_dlr_savebtn').html('Mengirim..');
+                    $.ajax({
+                        data: $('#add_dlr_form').serialize(),
+                        url: "{{ route('admin.dealer_ajax.store') }}",
+                        type: "POST",
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#add_dlr_form').trigger("reset");
+                            $('#add_dlr_modal').modal('hide');
+                            $('#alert_dlr').html('<div class="alert alert-success alert-dismissable d-flex" role="alert"><div class="flex-00-auto"><i class="fa fa-fw fa-check"></i></div><div class="flex-fill ml-3"><p class="mb-0">' + data.success + '</p></div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            table.draw();
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 8000);
+                        },
+                        error: function (data) {
+                          console.log('Error:', data);
+                          $('#add_dlr_savebtn').html('Save Changes');
+                      },
 
+                  });
+                });
 
-              if (ribuan) 
-              {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");}
+                //delete data
+                var dlr_id;
 
-                rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-                return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-            }
+                $(document).on('click', '.delete_dlr', function(){
+                    dlr_id = $(this).attr('id');
+                    dlr_id_dealer = $(this).attr('id_dealer');
+                    dlr_nama_dealer = $(this).attr('nama_dealer');
+                    $('#delete_message_dlr').html('Hapus data dealer <b>'+ dlr_nama_dealer +'</b> dengan ID Dealer <b>'+ dlr_id_dealer +'</b> ?')
+                    $('#confirm_delete_dlr_btn').html("Hapus");
 
-        </script>
+                });
 
-        <script type="text/javascript">
-            $("#thn_kendaraan").datepicker({
-                format: "yyyy",
-                viewMode: "years", 
-                minViewMode: "years",
-                autoclose: true
+                $('#confirm_delete_dlr_btn').click(function(){
+                    $.ajax({
+                        url:"dealer-ajax/destroy/"+dlr_id,
+                        beforeSend:function(){
+                            $('#confirm_delete_dlr_btn').text('Menghapus..');
+                        },
+                        success:function(data)
+                        {
+                            setTimeout(function(){
+                                $('#confirm_delete_modal_dlr').modal('hide');
+                            }, 250);
+                            table.draw();
+                            $('#alert_dlr').html('<div class="alert alert-success alert-dismissable d-flex" role="alert"><div class="flex-00-auto"><i class="fa fa-fw fa-check"></i></div><div class="flex-fill ml-3"><p class="mb-0">' + data.success + '</p></div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 8000);
+                        }
+                    })
+                });
+
+                //edit data
+                $(document).on('click', '.edit_dlr', function(){
+                    var id_dlr = $(this).attr('id');
+                    $.ajax({
+                        url :"dealer-ajax/edit/"+ id_dlr,
+                        dataType:"json",
+                        success:function(data)
+                        {
+                            $('#nama_dealer_edit').val(data.result.nama_dealer);
+                            $('#alamat_edit').val(data.result.alamat);
+                            $('#kota_edit').val(data.result.kota);
+                            $('#provinsi_edit').val(data.result.provinsi);
+                            $('#kontak_person_edit').val(data.result.kontak_person);
+                            $('#no_telp_edit').val(data.result.no_telp);
+                            $('#hidden_id_dlr').val(id_dlr);
+                        }
+                    })
+                    $('#edit_dlr_savebtn').html("Simpan");
+                });
+
+                //update
+                $('#edit_dlr_form').on('submit', function(e) {
+                    e.preventDefault();
+                    $('#edit_dlr_savebtn').html('Mengirim..');
+                    $.ajax({
+                        data: $('#edit_dlr_form').serialize(),
+                        url: "{{ route('admin.dealer_ajax.update') }}",
+                        type: "PATCH",
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#edit_dlr_form').trigger("reset");
+                            $('#edit_modal_dlr').modal('hide');
+                            $('#alert_dlr').html('<div class="alert alert-success alert-dismissable d-flex" role="alert"><div class="flex-00-auto"><i class="fa fa-fw fa-check"></i></div><div class="flex-fill ml-3"><p class="mb-0">' + data.success_edit + '</p></div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            table.draw();
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 8000);
+                        },
+                        error: function (data) {
+                          console.log('Error:', data);
+                          $('#edit_dlr_savebtn').html('Save Changes');
+                      },
+
+                  });
+                });
+
 
             });
         </script>
-
-        <script src="{{ asset('public/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/plugins/jquery-validation/additional-methods.js') }}"></script>
-        <!-- Page JS Code -->
-        <script src="{{ asset('public/assets/js/pages/be_forms_validation.min.js') }}"></script>
-        <!-- <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/message_id.js') }}"></script> -->
-        <script src="{{ asset('public/assets/js/plugins/jquery-validation/localization/messages_id.js') }}"></script>
 
 
 
