@@ -7,9 +7,9 @@
 
 	<title>Sticker Dealer {{$data->id_dealer}}</title>
 
-	<link rel="shortcut icon" sizes="32x32" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
-	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/assets/media/photos/salesapp.png') }}">
+	<link rel="shortcut icon" sizes="32x32" href="{{ asset('public/images/logo/logo_jki.png') }}">
+	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('public/images/logo/logo_jki.png') }}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/images/logo/logo_jki.png') }}">
 	<!-- END Icons -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/assets/bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -52,7 +52,7 @@
 		<!-- <div class="block-content"> -->
 			<div class="p-sm-4 p-xl-7">
 				<div class="row">
-					<div class="card mb-3 mr-3" style="width: 12rem; border-style: solid;border-width: 5px; border-color: #656565;">
+					<div class="card mb-3 mr-3" style="width: 12rem;height: 27rem;border-style: solid;border-width: 5px; border-color: #656565;">
 						<div class="card-header text-center">{!! QrCode::size(144)->backgroundColor(255,131,0)->margin(0)->generate($data->id_dealer); !!}
 						</div>
 						<ul class="list-group list-group-flush">
