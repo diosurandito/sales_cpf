@@ -115,6 +115,7 @@
                     fixedColumns:   {
                         leftColumns: 3
                     },
+                    lengthMenu: [ 10, 25, 50, 75, 100, 125, 150 ],
                     processing: true,
                     serverSide: true,
                     language: {
@@ -196,7 +197,7 @@
 
                 $('#confirm_delete_dlr_btn').click(function(){
                     $.ajax({
-                        url:"dealer-ajax/destroy/"+dlr_id,
+                        url:"dealer/destroy/"+dlr_id,
                         beforeSend:function(){
                             $('#confirm_delete_dlr_btn').text('Menghapus..');
                         },
@@ -218,7 +219,7 @@
                 $(document).on('click', '.edit_dlr', function(){
                     var id_dlr = $(this).attr('id');
                     $.ajax({
-                        url :"dealer-ajax/edit/"+ id_dlr,
+                        url :"dealer/edit/"+ id_dlr,
                         dataType:"json",
                         success:function(data)
                         {
@@ -260,6 +261,156 @@
                   });
                 });
 
+                //ON Dealer
+                var dlr_on_id;
+                $(document).on('click', '.on_dlr', function(){
+                    dlr_on_id = $(this).attr('id');
+                    dlr_on_id_dealer = $(this).attr('id_dealer');
+                    dlr_on_nama_dealer = $(this).attr('nama_dealer');
+                    $('#on_message_dlr').html('Aktifkan dealer <b>'+ dlr_on_nama_dealer +'</b> dengan ID Dealer <b>'+ dlr_on_id_dealer +'</b> ?')
+                    $('#on_dlr_btn').html("Aktif");
+                });
+
+                $('#on_dlr_btn').click(function(){
+                    $.ajax({
+                        url:"dealer/on/"+dlr_on_id,
+                        beforeSend:function(){
+                            $('#on_dlr_btn').text('Mengaktifkan..');
+                        },
+                        success:function(data)
+                        {
+                            setTimeout(function(){
+                                $('#on_modal_dlr').modal('hide');
+                            }, 250);
+                            table.draw();
+                            $('#alert_dlr').html('<div class="alert alert-success alert-dismissable d-flex" role="alert"><div class="flex-00-auto"><i class="fa fa-fw fa-check"></i></div><div class="flex-fill ml-3"><p class="mb-0">' + data.success_on + '</p></div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 8000);
+                        }
+                    })
+                });
+
+
+                //OFF Dealer
+                var dlr_off_id;
+                $(document).on('click', '.off_dlr', function(){
+                    dlr_off_id = $(this).attr('id');
+                    dlr_off_id_dealer = $(this).attr('id_dealer');
+                    dlr_off_nama_dealer = $(this).attr('nama_dealer');
+                    $('#off_message_dlr').html('Non-aktifkan dealer <b>'+ dlr_off_nama_dealer +'</b> dengan ID Dealer <b>'+ dlr_off_id_dealer +'</b> ?')
+                    $('#off_dlr_btn').html("Non-aktikan");
+                });
+
+                $('#off_dlr_btn').click(function(){
+                    $.ajax({
+                        url:"dealer/off/"+dlr_off_id,
+                        beforeSend:function(){
+                            $('#off_dlr_btn').text('Menon-aktifkan..');
+                        },
+                        success:function(data)
+                        {
+                            setTimeout(function(){
+                                $('#off_modal_dlr').modal('hide');
+                            }, 250);
+                            table.draw();
+                            $('#alert_dlr').html('<div class="alert alert-success alert-dismissable d-flex" role="alert"><div class="flex-00-auto"><i class="fa fa-fw fa-check"></i></div><div class="flex-fill ml-3"><p class="mb-0">' + data.success_off + '</p></div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 8000);
+                        }
+                    })
+                });
+
+
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                function convertDate(dateString){
+                    var p = dateString.split(/\D/g)
+                    return [p[2],p[1],p[0] ].join("-")
+                }
+
+                // view data
+                load_data();
+
+                function load_data(from_date = '', to_date = '')
+                {
+                    var table = $('#tb_sales_rekap2').DataTable({
+                        scrollY:        "70vh",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        pageLength: 50,
+                        fixedColumns:   {
+                            leftColumns: 3
+                        },
+                        lengthMenu: [ 10, 25, 50, 75, 100 ],
+                        processing: true,
+                        serverSide: true,
+                        language: {
+                            processing: '<div class="wobblebar-loader"></div>',
+                            sEmptyTable:   "Tidak ada data yang tersedia pada tabel ini",
+                            sLengthMenu:   "Tampilkan _MENU_ entri",
+                            sZeroRecords:  "Tidak ditemukan data yang sesuai",
+                            sInfo:         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+                            sInfoEmpty:    "Menampilkan 0 sampai 0 dari 0 entri",
+                            sInfoFiltered: "(disaring dari _MAX_ entri keseluruhan)",
+                            sInfoPostFix:  "",
+                            sSearch:       "Cari:",
+                            sUrl:          "",
+                            oPaginate: {
+                                sFirst:    "Pertama",
+                                sPrevious: "Sebelumnya",
+                                sNext:     "Selanjutnya",
+                                sLast:     "Terakhir"
+                            }
+                        },
+                        ajax: {
+                            url:'{{ route("admin.salesrekap_ajax.index") }}',
+                            data:{from_date:from_date, to_date:to_date}
+                        },
+                        columns: [
+                        {data: 'DT_RowIndex', name: 'DT_RowIndex', sClass: 'text-center'},
+                        {data: 'nik', name: 'nik', sClass: 'text-center nowrap'},
+                        {data: 'nama', name: 'nama', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                        {data: 'nama_dealer2', name: 'nama_dealer2', sClass: 'text-center'},
+                        {data: 'd_alamat2', name: 'd_alamat2', sClass: 'text-center'},
+                        {data: 'tgl_kunjungan2', name: 'tgl_kunjungan2', sClass: 'text-center'},
+                        {data: 'lokasi', name: 'lokasi', sClass: 'text-center', orderable: false, searchable: false},
+                        ]
+
+
+                    });
+                }
+
+
+                $('#filter').click(function(){
+                    var from_date = convertDate($('#from_date').val());
+                    var to_date = convertDate($('#to_date').val());
+                    if($('#from_date').val() != '' &&  $('#to_date').val() != '')
+                    {
+                        $('#tb_sales_rekap2').DataTable().destroy();
+                        load_data(from_date, to_date);
+                    }
+                    else
+                    {
+                        alert('Harap isi terlebih dahulu keduanya!');
+                    }
+                });
+
+                $('#refresh').click(function(){
+                  $('#from_date').val('');
+                  $('#to_date').val('');
+                  $('#tb_sales_rekap2').DataTable().destroy();
+                  load_data();
+              });
 
             });
         </script>

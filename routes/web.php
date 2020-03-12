@@ -26,29 +26,30 @@ Route::group(['prefix' => '/'], function()
 	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
 
 	//Dealer
-	Route::get('dealer', 'Admin\DealerController@index')->name('admin.dealer.index');
-	Route::post('dealer/store','Admin\DealerController@store')->name('admin.dealer.store');
-	Route::patch('dealer/on/{id}', 'Admin\DealerController@on')->name('admin.dealer.on');
-	Route::patch('dealer/off/{id}', 'Admin\DealerController@off')->name('admin.dealer.off');
-	Route::get('dealer/destroy/{id}','Admin\DealerController@destroy')->name('admin.dealer.destroy');
-	Route::patch('dealer/update/{id}', 'Admin\DealerController@update')->name('admin.dealer.update');
+	// Route::get('dealer', 'Admin\DealerController@index')->name('admin.dealer.index');
+	// Route::post('dealer/store','Admin\DealerController@store')->name('admin.dealer.store');
+	// Route::patch('dealer/on/{id}', 'Admin\DealerController@on')->name('admin.dealer.on');
+	// Route::patch('dealer/off/{id}', 'Admin\DealerController@off')->name('admin.dealer.off');
+	// Route::get('dealer/destroy/{id}','Admin\DealerController@destroy')->name('admin.dealer.destroy');
+	// Route::patch('dealer/update/{id}', 'Admin\DealerController@update')->name('admin.dealer.update');
 
 	//DEALER AJAX
-	Route::get('dealer-ajax', 'Admin\DealerAjaxController@index')->name('admin.dealer_ajax.index');
-
-	Route::post('dealer-ajax/store','Admin\DealerAjaxController@store')->name('admin.dealer_ajax.store');
-
-	Route::get('dealer-ajax/edit/{id}', 'Admin\DealerAjaxController@edit')->name('admin.dealer_ajax.edit');
-	Route::patch('dealer-ajax/update', 'Admin\DealerAjaxController@update')->name('admin.dealer_ajax.update');
-
-	Route::get('dealer-ajax/destroy/{id}','Admin\DealerAjaxController@destroy')->name('admin.dealer_ajax.destroy');
+	Route::get('dealer', 'Admin\DealerAjaxController@index')->name('admin.dealer_ajax.index');
+	Route::post('dealer/store','Admin\DealerAjaxController@store')->name('admin.dealer_ajax.store');
+	Route::get('dealer/edit/{id}', 'Admin\DealerAjaxController@edit')->name('admin.dealer_ajax.edit');
+	Route::patch('dealer/update', 'Admin\DealerAjaxController@update')->name('admin.dealer_ajax.update');
+	Route::get('dealer/on/{id}', 'Admin\DealerAjaxController@on')->name('admin.dealer_ajax.on');
+	Route::get('dealer/off/{id}', 'Admin\DealerAjaxController@off')->name('admin.dealer_ajax.off');
+	Route::get('dealer/destroy/{id}','Admin\DealerAjaxController@destroy')->name('admin.dealer_ajax.destroy');
 
 	
 
 	//Sales Rekap
-	Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
-	
-	Route::post('sales-rekap/filter', 'Admin\SalesRekapController@filter')->name('admin.salesrekap.index.filter');
+	// Route::get('sales-rekap', 'Admin\SalesRekapController@index')->name('admin.salesrekap.index');
+	// Route::post('sales-rekap/filter', 'Admin\SalesRekapController@filter')->name('admin.salesrekap.index.filter');
+	//Sales Rekap Ajax
+
+	Route::get('sales-rekap', 'Admin\SalesRekapAjaxController@index')->name('admin.salesrekap_ajax.index');
 
 
 	//Sticker

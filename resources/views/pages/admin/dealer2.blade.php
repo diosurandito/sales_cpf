@@ -51,7 +51,7 @@
 							<th style="font-size: 13px;" class="align-middle">No</th>
 							<th style="font-size: 13px;" class="align-middle">ID Dealer</th>
 							<th style="font-size: 13px;" class="align-middle">Nama Dealer</th>
-							<th style="font-size: 13px;" class="align-middle">Alamat</th>
+							<th style="font-size: 13px;" class="align-middle text-center">Alamat</th>
 							<th style="font-size: 13px;" class="align-middle">Kota/Kab.</th>
 							<th style="font-size: 13px;" class="align-middle">Provinsi</th>
 							<th style="font-size: 13px;" class="align-middle">Kontak Person</th>
@@ -158,6 +158,57 @@
 								</form>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ON Dealer -->
+	<div class="modal fade" id="on_modal_dlr" tabindex="-1" role="dialog" aria-labelledby="modal-block-popin modal-block-vcenter" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-popin modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="block block-themed block-transparent mb-0">
+					<div class="block-header bg-amethyst-dark">
+						<h3 class="block-title">Aktifkan Dealer</h3>
+						<div class="block-options">
+							<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+								<i class="fa fa-fw fa-times"></i>
+							</button>
+						</div>
+					</div>
+					<div class="block-content font-size-sm">
+						<p id="on_message_dlr" style="font-size: 17px;"></p>
+					</div>
+					
+					@csrf
+					<div class="block-content block-content-full text-right border-top">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-success text-white" id="on_dlr_btn">Aktif</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- OFF Dealer -->
+	<div class="modal fade" id="off_modal_dlr" tabindex="-1" role="dialog" aria-labelledby="modal-block-popin modal-block-vcenter" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-popin modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="block block-themed block-transparent mb-0">
+					<div class="block-header bg-amethyst-dark">
+						<h3 class="block-title">Non-Aktifkan Dealer</h3>
+						<div class="block-options">
+							<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+								<i class="fa fa-fw fa-times"></i>
+							</button>
+						</div>
+					</div>
+					<div class="block-content font-size-sm">
+						<p id="off_message_dlr" style="font-size: 17px;"></p>
+					</div>
+					@csrf
+					<div class="block-content block-content-full text-right border-top">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-danger text-white" id="off_dlr_btn">Matikan</button>
 					</div>
 				</div>
 			</div>

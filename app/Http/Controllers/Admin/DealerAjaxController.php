@@ -29,9 +29,9 @@ class DealerAjaxController extends Controller
 			->addIndexColumn()
 			->addColumn('status', function($data){
 				if ($data->status == 1) {
-					$status = '<button type="button" class="btn btn-sm btn-outline-success" style="cursor: default;" title="Aktif"><i class="lg fa fa-check-circle fa-lg"></i></button>';
+					$status = '<button type="button" class="btn btn-sm btn-success" style="cursor: default;" title="Aktif"><i class="lg fa fa-check-circle fa-lg"></i></button>';
 				}else{
-					$status = '<button type="button" class="btn btn-sm btn-outline-dark" style="cursor: default;" title="Non-Aktif"><i class="fa fa-times-circle fa-lg"></i></button>';
+					$status = '<button type="button" class="btn btn-sm btn-dark" style="cursor: default;" title="Non-Aktif"><i class="fa fa-times-circle fa-lg"></i></button>';
 				}
 				return $status;
 			})
@@ -42,13 +42,13 @@ class DealerAjaxController extends Controller
 			})
 			->addColumn('aksi', function($data){
 				if ($data->status == 0) {
-					$aksi = '<div class="btn-group"><button type="button" class="on_dlr btn btn-sm btn-success" data-toggle="modal" data-target="#on_modal_dlr" name="on_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Aktifkan?"><i class="fa fa-check"></i></button>
+					$aksi = '<div class="btn-group"><button type="button" class="on_dlr btn btn-sm btn-outline-success" data-toggle="modal" data-target="#on_modal_dlr" name="on_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Aktifkan?"><i class="fa fa-check"></i></button>
 					<button type="button" class="edit_dlr btn btn-sm btn-warning" data-toggle="modal" data-target="#edit_modal_dlr" name="edit_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Edit Data"><i class="fa fa-pen"></i>
 					</button>
 					<button type="button" class="delete_dlr btn btn-sm btn-danger" data-toggle="modal" data-target="#destroy_modal_dlr" name="confirm_delete_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Hapus Data"><i class="fa fa-fw fa-trash"></i>
 					</button></div>';
 				}else{
-					$aksi = '<div class="btn-group"><button type="button" class="off_dlr btn btn-sm btn-secondary" data-toggle="modal" data-target="#off_modal_dlr" name="off_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Non-aktikan?"><i class="fa fa-times"></i></button>
+					$aksi = '<div class="btn-group"><button type="button" class="off_dlr btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#off_modal_dlr" name="off_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Non-aktikan?"><i class="fa fa-times"></i></button>
 					<button type="button" class="edit_dlr btn btn-sm btn-warning" data-toggle="modal" data-target="#edit_modal_dlr" name="edit_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Edit Data"><i class="fa fa-pen"></i>
 					</button>
 					<button type="button" class="delete_dlr btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm_delete_modal_dlr" name="destroy_modal_dlr" id="'.$data->id.'" id_dealer="'.$data->id_dealer.'" nama_dealer="'.$data->nama_dealer.'" title="Hapus Data"><i class="fa fa-fw fa-trash"></i>
@@ -116,6 +116,39 @@ class DealerAjaxController extends Controller
 		Dealer::whereId($request->hidden_id_dlr)->update($form_data);
 
 		return response()->json(['success_edit' => 'Data Dealer Berhasil Diubah.']);
+	}
+
+	public function confirm($id)
+	{
+		$form_data = array(
+			'status' => 'complete',
+			'approved_at' => Carbon::now(),
+			'approved_by' => Auth::user()->nik,
+		);
+
+		PoRekap::whereId($id)->update($form_data);
+
+		return response()->json(['success_confirm' => 'Data PO Berhasil Dikonfirmasi.']);
+	}
+
+	public function on($id)
+	{
+		$data = Dealer::find($id);
+		$data->update([
+			'status' => 1
+		]);
+
+		return response()->json(['success_on' => 'Dealer Berhasil Diaktifkan.']);
+	}
+
+	public function off($id)
+	{
+		$data = Dealer::find($id);
+		$data->update([
+			'status' => 0
+		]);
+
+		return response()->json(['success_off' => 'Dealer Berhasil Dinon-aktifkan.']);
 	}
 
 	public function destroy($id)
