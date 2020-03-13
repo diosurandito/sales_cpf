@@ -4,7 +4,7 @@
 
 <nav id="sidebar" aria-label="Main Navigation">
     <!-- Side Header -->
-    <div class="content-header" style="background-color: #f3f3f3c7;padding-left: 12px;">
+    <div class="content-header" style="background-color: #ffffff61;padding-left: 12px;">
         <!-- Logo -->
         <a class="font-w600 text-dual" href="">
             <img src="{{ asset('public/images/logo/logo_jki.png') }}" style="width: 35px;">
