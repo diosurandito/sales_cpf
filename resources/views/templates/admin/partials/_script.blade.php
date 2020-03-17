@@ -348,9 +348,6 @@
                         scrollX:        true,
                         scrollCollapse: true,
                         pageLength: 50,
-                        fixedColumns:   {
-                            leftColumns: 3
-                        },
                         lengthMenu: [ 10, 25, 50, 75, 100 ],
                         processing: true,
                         serverSide: true,
@@ -379,7 +376,7 @@
                         columns: [
                         {data: 'DT_RowIndex', name: 'DT_RowIndex', sClass: 'text-center'},
                         {data: 'nik', name: 'nik', sClass: 'text-center nowrap'},
-                        {data: 'nama', name: 'nama', sClass: 'text-center', defaultContent: '<i>Tidak Ada</i>'},
+                        {data: 'nama', name: 'nama', sClass: 'text-center nowrap', defaultContent: '<i>Tidak Ada</i>'},
                         {data: 'nama_dealer2', name: 'nama_dealer2', sClass: 'text-center'},
                         {data: 'd_alamat2', name: 'd_alamat2', sClass: 'text-center'},
                         {data: 'tgl_kunjungan2', name: 'tgl_kunjungan2', sClass: 'text-center'},

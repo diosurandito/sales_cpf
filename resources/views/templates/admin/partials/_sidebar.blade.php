@@ -9,7 +9,7 @@
         <a class="font-w600 text-dual" href="">
             <img src="{{ asset('public/images/logo/logo_jki.png') }}" style="width: 35px;">
             <span class="smini-hide">
-                <span class="font-w700 font-size-h5 text-dark">&nbsp;Sistem RKS JKI</span>
+                <span class="font-w700 font-size-h5 text-white">&nbsp;Sistem RKS JKI</span>
             </span>
         </a>
         <!-- END Logo -->

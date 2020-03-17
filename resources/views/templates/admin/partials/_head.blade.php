@@ -119,10 +119,20 @@
             </style> -->
 
             <style type="text/css">
-                td.nowrap {
-                    white-space:nowrap;
-                }
-            </style>
+            td.nowrap {
+                white-space:nowrap;
+            }
+        </style>
+        @if(!Request::is('dealer'))
+        <style type="text/css">
+        div.dataTables_scrollHeadInner {
+            width: 100%!important;
+        }
+        table.table.table-bordered.table-striped.dataTable.no-footer {
+            width: 100%!important;
+        }
+    </style>
+    @endif
 
-        </head>
+</head>
 
